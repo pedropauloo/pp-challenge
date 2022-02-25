@@ -3,7 +3,7 @@ import { CloseButton, ContainerModal, Content, Wrapper } from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { SubTopic } from "@components/Text/styles";
 
-const Modal = ({ isOpen, setIsOpen, title }: any) => {
+const Modal = ({ isOpen, setIsOpen, title, children }: any) => {
   const [openContent, setOpenContent] = useState(true);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Modal = ({ isOpen, setIsOpen, title }: any) => {
         <CloseButton onClick={() => setOpenContent(false)}>
           <CloseIcon />
         </CloseButton>
-        <h1>asdasodkaso</h1>
+        {children}
       </Content>
     </ContainerModal>
   );

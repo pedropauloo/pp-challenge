@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
 
-export const ModalButton = styled("button")`
+export const Button = styled("button")<{
+  contentPosition: string;
+  fontWeight: string;
+}>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ contentPosition }) => contentPosition};
+  font-weight: ${({ fontWeight }) => fontWeight};
   font-size: 16px;
   padding: 13px 20px;
   background: #ffffff;

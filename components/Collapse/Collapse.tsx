@@ -9,11 +9,10 @@ import {
   CollpaseContent,
 } from "./styles";
 
-const Collapse = ({ title, subTitle, children, open }: any) => {
+const Collapse = ({ header, children, open }: any) => {
   const [isOpen, setIsOpen] = useState(open);
   const [height, setHeight] = useState<number | undefined>(0);
   const rotateIcon = `rotate(${isOpen ? "-90" : "90"}deg)`;
-
 
   const showCollapseContent = () => {
     setIsOpen((prev: boolean) => !prev);
@@ -27,28 +26,23 @@ const Collapse = ({ title, subTitle, children, open }: any) => {
   }, [isOpen]);
 
   return (
-    <>
-      <CollapseContainer open={isOpen}>
-        <CollapseHeader>
-          <CollapseInfo>
-            <h6>{title}</h6>
-            <h6>{subTitle}</h6>
-          </CollapseInfo>
-          <CollapseButton type="button" onClick={showCollapseContent}>
-            <ChevronRightIcon
-              style={{ transform: rotateIcon }}
-              fontSize="large"
-            />
-          </CollapseButton>
-        </CollapseHeader>
+    <CollapseContainer open={isOpen}>
+      <CollapseHeader>
+        <CollapseInfo>{header}</CollapseInfo>
+        <CollapseButton type="button" onClick={showCollapseContent}>
+          <ChevronRightIcon
+            style={{ transform: rotateIcon }}
+            fontSize="large"
+          />
+        </CollapseButton>
+      </CollapseHeader>
 
-        <CollpaseContent style={{ height }}>
-          <div ref={ref}>
-            <div>{isOpen && <div>{children}</div>}</div>
-          </div>
-        </CollpaseContent>
-      </CollapseContainer>
-    </>
+      <CollpaseContent style={{ height }}>
+        <div ref={ref}>
+          <div>{isOpen && <div>{children}</div>}</div>
+        </div>
+      </CollpaseContent>
+    </CollapseContainer>
   );
 };
 

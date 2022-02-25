@@ -84,3 +84,24 @@ export const CloseButton = styled("button")`
   border: none;
   background: transparent;
 `;
+
+export const ContainerMenuModal = styled("ul")`
+  list-style-type: none;
+`;
+export const ItemMenuModal = styled("li")`
+  background: #ffffff;
+`;
+export const ButtonMenuModal = styled("button")`
+  background: transparent;
+  width: 100%;
+  border: none;
+  padding: 8px 0 8px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: #587169;
+
+  &:hover {
+    font-weight: 600;
+  }
+`;

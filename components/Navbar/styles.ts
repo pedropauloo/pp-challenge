@@ -20,7 +20,7 @@ export const NavbarContainer = styled("nav")`
   }
 `;
 
-export const Avatar = styled("img")`
+export const UserImage = styled("img")`
   width: 32px;
   height: 32px;
   border-radius: 50%;
