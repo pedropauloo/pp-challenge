@@ -10,8 +10,8 @@ import SearchInput from "@components/Form/SearchInput";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Collapse from "@components/Collapse/Collapse";
 import { agentsApi } from "services/agents";
-import { HeaderCollapse } from "@components/Colaboradores/HeaderCollapse";
-import { ContentCollapse } from "@components/Colaboradores/ContentCollapse";
+import { HeaderCollapse } from "@components/Agent/HeaderCollapse";
+import { ContentCollapse } from "@components/Agent/ContentCollapse";
 import {
   ButtonMenuModal,
   ContainerMenuModal,

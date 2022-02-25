@@ -20,3 +20,13 @@ export const Button = styled("button")<{
     border-color: #b5f1dd;
   }
 `;
+
+export const BackButton = styled("button")`
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  background: #eaefed;
+  border-radius: 50%;
+  color: #34423d;
+`;

@@ -5,8 +5,23 @@ export const Input = styled("input")`
   color: #587169;
   border-radius: 8px;
   background: #ffffff;
-  padding: 16px;
   padding: 16px 16px 16px 40px;
+  width: 100%;
+  font-weight: 500;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: #b5f1dd;
+  }
+`;
+export const Select = styled("span")`
+  display: block;
+  border: 2px solid #cad6d1;
+  color: #587169;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 16px;
   width: 100%;
   font-weight: 500;
 
@@ -30,12 +45,19 @@ export const Label = styled("label")`
 
 export const ContainerInput = styled("div")`
   position: relative;
-  margin: 32px 0;
+  margin: 16px 0;
   min-width: 250px;
 `;
+
 export const SearchIconContainer = styled("div")`
   color: #587169;
   position: absolute;
   top: 16px;
   left: 16px;
+`;
+export const ArrowContainer = styled("div")`
+  color: #587169;
+  position: absolute;
+  top: 14px;
+  right: 16px;
 `;
