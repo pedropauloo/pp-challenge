@@ -1,7 +1,6 @@
 import { Button } from "@components/Button/styles";
 import Image from "next/image";
 import {
-  Badge,
   ContainerContent,
   Info,
   InfoContent,
@@ -9,13 +8,7 @@ import {
   FooterContent,
 } from "@components/Layout/styles";
 
-export const ContentCollapse = ({
-  departament,
-  role,
-  branch,
-  branch2,
-  status,
-}: any) => {
+export const ContentCollapse = ({ departament, agentsQuantity }: any) => {
   return (
     <ContainerContent>
       <InfoContent>
@@ -25,27 +18,11 @@ export const ContentCollapse = ({
         </div>
 
         <div>
-          <Label>Cargo</Label>
-          <Info>{role}</Info>
+          <Label>Colaboradores</Label>
+          <Info>{agentsQuantity}</Info>
         </div>
       </InfoContent>
 
-      <InfoContent>
-        <div>
-          <Label>Unidade</Label>
-          <Info>{branch2}</Info>
-        </div>
-        <div>
-          <Label>Unidade</Label>
-          <Info>{branch}</Info>
-        </div>
-      </InfoContent>
-      <InfoContent>
-        <div>
-          <Label>Status</Label>
-          <Badge>{status.replace(/^\w/, (c: string) => c.toUpperCase())}</Badge>
-        </div>
-      </InfoContent>
       <FooterContent>
         <Button contentPosition="center" fontWeight="600">
           <Image

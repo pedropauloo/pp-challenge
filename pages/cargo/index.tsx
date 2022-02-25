@@ -8,9 +8,9 @@ import Modal from "@components/Modal/Modal";
 import SearchInput from "@components/Form/SearchInput";
 
 import Collapse from "@components/Collapse/Collapse";
-import { agentsApi } from "services/agents";
-import { HeaderCollapse } from "@components/Agent/HeaderCollapse";
-import { ContentCollapse } from "@components/Agent/ContentCollapse";
+import { rolesApi } from "services/roles";
+import { HeaderCollapse } from "@components/Role/HeaderCollapse";
+import { ContentCollapse } from "@components/Role/ContentCollapse";
 import {
   ButtonMenuModal,
   ContainerMenuModal,
@@ -20,14 +20,14 @@ import { HomeHeader } from "@components/Layout/styles";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const Home: NextPage = () => {
+const Cargo: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [agents, setAgents] = useState<any[] | null>(null);
 
   useEffect(() => {
-    agentsApi.getAgents().then((response) => {
-      console.log(response.data.items);
-      setAgents(response.data.items);
+    rolesApi.getRoles().then((response) => {
+      console.log(response.data.roles);
+      setAgents(response.data.roles);
     });
   }, []);
 
@@ -35,14 +35,14 @@ const Home: NextPage = () => {
     <div>
       <Container>
         <HomeHeader>
-          <Topic>Colaboradores</Topic>
+          <Topic>Cargo</Topic>
         </HomeHeader>
         <Button
           fontWeight="400"
           contentPosition="space-between"
           onClick={() => setShowModal(true)}
         >
-          Colaboradores <MoreVertIcon />
+          Cargos <MoreVertIcon />
         </Button>
         {showModal && (
           <Modal isOpen={showModal} setIsOpen={setShowModal} title="Categorias">
@@ -61,28 +61,19 @@ const Home: NextPage = () => {
           label="Pesquisar por"
           placeholder="Pesquise por nome ou cpf"
         />
-        <SubTopic>Listagem de colaboradores</SubTopic>
+        <SubTopic>Listagem de cargos</SubTopic>
 
         {agents?.map((item, itemIndex) => {
           return (
             <Collapse
               title="Nome completo"
               key={itemIndex}
-              header={
-                <HeaderCollapse
-                  avatarName={item.name}
-                  avatarImage={item.image}
-                  altImage="Imagem perfil colaborador"
-                />
-              }
+              header={<HeaderCollapse roleName={item.name} />}
               open={false}
             >
               <ContentCollapse
-                departament={item.department}
-                role={item.role}
-                branch={item.branch}
-                branch2="123456789"
-                status={item.status}
+                departament={item.departament}
+                agentsQuantity={item.agents_quantity}
               />
             </Collapse>
           );
@@ -96,4 +87,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Cargo;

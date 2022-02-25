@@ -5,22 +5,22 @@ import {
   AgentContentHeader,
   AgentHeader,
   AgentPersonalInfo,
-  AvatarCircle,
-  Container,
   PersonalInfo,
   InfoAgente,
   LabelPersonalInfo,
   PersonalItem,
-  PersonalItemImage,
+  CircleImage,
   PersonalItemContent,
   OrganizationalData,
-} from "@components/Agent/styles";
+} from "@components/Layout/styles";
 import { BackButton } from "@components/Button/styles";
 import { SubTopic, Text, ThinText, Topic } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Image from "next/image";
 import SelectInput from "@components/Form/SelectInput";
+import { Container } from "@components/Layout/styles";
+import { agentsApi } from "services/agents";
 const Agent: NextPage = () => {
   return (
     <Container>
@@ -32,12 +32,15 @@ const Agent: NextPage = () => {
       </AgentHeader>
       <AgentContent>
         <AgentContentHeader>
-          <AvatarCircle
-            src="/images/file-plus.svg"
-            alt="teste"
-            width={64}
-            height={64}
-          />
+          <CircleImage width="60" height="60">
+            <Image
+              src="/images/user.svg"
+              alt="teste"
+              width={1}
+              height={1}
+              layout="responsive"
+            />
+          </CircleImage>
           <InfoAgente>
             <SubTopic>Shinji Ikari</SubTopic>
             <ThinText>shinjiikari@gmail.com</ThinText>
@@ -47,7 +50,7 @@ const Agent: NextPage = () => {
           <Topic>Informações pessoais</Topic>
 
           <PersonalItem>
-            <PersonalItemImage>
+            <CircleImage width="40" height="40">
               <Image
                 src="/images/id.svg"
                 alt="teste"
@@ -55,7 +58,7 @@ const Agent: NextPage = () => {
                 height={1}
                 layout="responsive"
               />
-            </PersonalItemImage>
+            </CircleImage>
             <PersonalItemContent>
               <LabelPersonalInfo>CPF</LabelPersonalInfo>
               <PersonalInfo>869 748 070 15</PersonalInfo>
@@ -63,7 +66,7 @@ const Agent: NextPage = () => {
           </PersonalItem>
 
           <PersonalItem>
-            <PersonalItemImage>
+            <CircleImage width="40" height="40">
               <Image
                 src="/images/phone-call.svg"
                 alt="teste"
@@ -71,7 +74,7 @@ const Agent: NextPage = () => {
                 height={1}
                 layout="responsive"
               />
-            </PersonalItemImage>
+            </CircleImage>
             <PersonalItemContent>
               <LabelPersonalInfo>Telefone</LabelPersonalInfo>
               <PersonalInfo>+55 82 2512 6627</PersonalInfo>
@@ -79,7 +82,7 @@ const Agent: NextPage = () => {
           </PersonalItem>
 
           <PersonalItem>
-            <PersonalItemImage>
+            <CircleImage width="40" height="40">
               <Image
                 src="/images/calendar.svg"
                 alt="teste"
@@ -87,7 +90,7 @@ const Agent: NextPage = () => {
                 height={1}
                 layout="responsive"
               />
-            </PersonalItemImage>
+            </CircleImage>
             <PersonalItemContent>
               <LabelPersonalInfo>Nascimento</LabelPersonalInfo>
               <PersonalInfo>29/11/1990</PersonalInfo>
@@ -108,3 +111,15 @@ const Agent: NextPage = () => {
 };
 
 export default Agent;
+
+// export async function getStaticProps({ params }: any) {
+//   // const results = await fetch(
+//   //   `https://last-airbender-api.herokuapp.com/api/v1/characters?name=${agentId}`
+//   // ).then((res) => res.json());
+//   const agent = agentsApi.getAgentById(params.colaborador.id).then((response) => response);
+//   return {
+//     props: {
+//       agent: agent,
+//     },
+//   };
+// }

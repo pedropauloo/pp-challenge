@@ -1,4 +1,9 @@
-import { AvatarCircle, ContainerHeader, Label, AvatarName } from "./styles";
+import {
+  AvatarCircle,
+  ContainerHeader,
+  Label,
+  AvatarName,
+} from "@components/Layout/styles";
 
 export const HeaderCollapse = ({ avatarImage, avatarName, altImage }: any) => {
   return (

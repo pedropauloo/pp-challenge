@@ -4,8 +4,6 @@ export const Topic = styled("h1")`
   font-weight: 600;
   font-size: 20px;
   color: #34423d;
-  /* margin-left: 16px; */
-  /* margin: 40px 0 0 16px; */
 `;
 export const SubTopic = styled("h2")`
   font-size: 18px;

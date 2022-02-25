@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import CachedIcon from "@mui/icons-material/Cached";
 
 export const Button = styled("button")<{
   contentPosition: string;
@@ -21,6 +22,11 @@ export const Button = styled("button")<{
   }
 `;
 
+export const LoadMoreIcon = styled(CachedIcon)`
+  color: #1dd195;
+  margin-right: 8px;
+`;
+
 export const BackButton = styled("button")`
   border: none;
   width: 32px;
@@ -29,4 +35,5 @@ export const BackButton = styled("button")`
   background: #eaefed;
   border-radius: 50%;
   color: #34423d;
+  margin-right: 14px;
 `;
