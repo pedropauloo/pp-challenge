@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Button, LoadMoreIcon } from "@components/Button/styles";
-import { Container } from "@components/Layout/styles";
+import { ContainerCard } from "@components/Layout/styles";
 import { SubTopic, Topic } from "@components/Text/styles";
 import Modal from "@components/Modal/Modal";
 import FormSearch from "@components/Form/FormSearch";
@@ -33,10 +33,10 @@ const Cargo: NextPage = () => {
 
   return (
     <div>
-      <Container>
-        <HomeHeader>
-          <Topic>Cargo</Topic>
-        </HomeHeader>
+      <HomeHeader>
+        <Topic>Cargos</Topic>
+      </HomeHeader>
+      <ContainerCard>
         <Button
           fontWeight="400"
           contentPosition="space-between"
@@ -82,7 +82,7 @@ const Cargo: NextPage = () => {
           <LoadMoreIcon />
           Carregar Mais
         </Button>
-      </Container>
+      </ContainerCard>
     </div>
   );
 };

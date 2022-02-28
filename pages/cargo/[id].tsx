@@ -10,7 +10,7 @@ import { Topic } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FormSelect from "@components/Form/FormSelect";
-import { Container } from "@components/Layout/styles";
+import { ContainerCard } from "@components/Layout/styles";
 import FormInput from "@components/Form/FormInput";
 import { useEffect, useState } from "react";
 import { rolesApi } from "services/roles";
@@ -35,52 +35,60 @@ const Agent: NextPage = () => {
   useEffect(() => {
     rolesApi.getRoleById(1).then((response) => {
       console.log(response.data.role);
+      console.log(response.data.role.grouprules[0].permissions.includes('write'))
       setRole(response.data.role);
     });
   }, []);
 
   return (
-    <Container>
+    <>
       <PageHeader>
         <BackButton>
           <ArrowBackIcon />
         </BackButton>
         <Topic>Novo cargo</Topic>
       </PageHeader>
-      <PageContent>
-        <PageSection>
-          <Topic>Dados do cargo</Topic>
+      <ContainerCard>
+        <PageContent>
+          <PageSection>
+            <Topic>Dados do cargo</Topic>
 
-          <FormSelect label="Departamento" content="Comercial" />
+            <FormSelect label="Departamento" content="Comercial" />
 
-          <FormInput type="text" label="Cargo" />
-        </PageSection>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableHeadData>Cargo</TableHeadData>
-              <TableHeadData>Ler</TableHeadData>
-              <TableHeadData>Editar</TableHeadData>
-              <TableHeadData>Comentar</TableHeadData>
-            </TableRow>
-          </TableHead>
+            <FormInput type="text" label="Cargo" />
+          </PageSection>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeadData>Cargo</TableHeadData>
+                <TableHeadData>Ler</TableHeadData>
+                <TableHeadData>Editar</TableHeadData>
+                <TableHeadData>Comentar</TableHeadData>
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            {role?.grouprules.map((row, rowIndex): any => {
-              return (
-                <TableRow key={rowIndex}>
-                  <TableData>{row.role}</TableData>
-                  <FormCheckbox checked={checked} />
-                  {/* <TableData>{row.permissions[0]}</TableData> */}
-                  <TableData>{row.permissions[1]}</TableData>
-                  <TableData>{row.permissions[2]}</TableData>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </PageContent>
-    </Container>
+            <TableBody>
+              {role?.grouprules.map((row, rowIndex): any => {
+                return (
+                  <TableRow key={rowIndex}>
+                    <TableData>{row.role}</TableData>
+                    <TableData>
+                      <FormCheckbox checked={row.permissions.includes('read')} />
+                    </TableData>
+                    <TableData>
+                      <FormCheckbox checked={row.permissions.includes('write')} />
+                    </TableData>
+                    <TableData>
+                      <FormCheckbox checked={row.permissions.includes('delete')} />
+                    </TableData>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </PageContent>
+      </ContainerCard>
+    </>
   );
 };
 

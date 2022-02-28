@@ -1,12 +1,12 @@
 import Navbar from "@components/Navbar/Navbar";
 import { NextPage } from "next";
-import { Background } from "./styles";
+import { Background, Content } from "./styles";
 
 const Layout: NextPage = ({ children }: any) => {
   return (
     <Background>
       <Navbar />
-      {children}
+      <Content>{children}</Content>
     </Background>
   );
 };

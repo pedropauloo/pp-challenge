@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Checkbox, CheckboxIcon, Checkmark } from "./styles";
 
-const FormCheckbox = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  function handleCheckboxChange() {
-    setIsChecked(!isChecked);
-  }
+const FormCheckbox = ({ checked }: any) => {
+  const [isChecked, setIsChecked] = useState(checked);
 
   return (
     <label>

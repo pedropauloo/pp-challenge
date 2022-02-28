@@ -5,14 +5,22 @@ export const Background = styled("main")`
   background: #f8faf9;
 `;
 
-export const Container = styled("div")`
-  margin: 5px;
-  padding: 40px 16px;
+export const Content = styled('div')`
+  padding: 0 5px;
+  margin: 0 auto;
+`
+
+export const ContainerCard = styled("div")`
+  margin: 20px auto 40px;
+  max-width: 960px;
+  padding: 20px 16px;
   background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
+  border-radius: 8px;
 `;
 
 export const HomeHeader = styled("div")`
-  margin-bottom: 40px;
+  margin: 40px auto 24px 16px;
 `;
 
 export const AvatarCircle = styled(Image)`
@@ -72,18 +80,17 @@ export const FooterContent = styled("div")`
   margin-top: 16px;
 `;
 
-export const PageHeader = styled("div")`
+export const PageHeader = styled(HomeHeader)`
+  margin-left: auto;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 40px;
 `;
 export const PageContent = styled("div")`
-  margin: 40px 0;
 `;
 export const PageContentHeader = styled("div")`
   display: flex;
   align-items: center;
-  margin: 40px 0;
+  margin: 20px 0;
 `;
 export const PageSection = styled("div")``;
 
@@ -91,16 +98,16 @@ export const ItemSection = styled("div")`
   margin: 8px 0;
   display: flex;
   border: 2px solid #cad6d1;
+  background: #F5FAF8;
   padding: 16px;
   border-radius: 8px;
 `;
-export const CircleImage = styled("div")<{ width: string; height: string }>`
+export const CircleImage = styled("div") <{ width: string; height: string; padding: string; }>`
   position: relative;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  background: #cad6d1;
-  border: 2px solid #cad6d1;
-  padding: 6px;
+  background: #EAEFED;
+  padding: ${({ padding }) => padding}px;
   border-radius: 50%;
 `;
 export const ItemSectionContent = styled("div")`
@@ -116,7 +123,7 @@ export const LabelPersonalInfo = styled("span")`
 export const PersonalInfo = styled("span")`
   font-size: 14px;
   font-weight: 600;
-  color: #34423d;
+  color: #587169;
 `;
 
 export const InfoAgente = styled("div")`
