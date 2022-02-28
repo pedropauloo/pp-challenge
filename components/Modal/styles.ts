@@ -95,7 +95,7 @@ export const ButtonMenuModal = styled("button")`
   background: transparent;
   width: 100%;
   border: none;
-  padding: 8px 0 8px 16px;
+  padding: 16px 0;
   font-size: 16px;
   font-weight: 400;
   text-align: left;

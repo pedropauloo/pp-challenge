@@ -7,7 +7,7 @@ import {
 
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const SelectInput = ({ label, content }: any) => {
+const FormSelect = ({ label, content }: any) => {
   return (
     <ContainerInput>
       <Label>{label}</Label>
@@ -19,4 +19,4 @@ const SelectInput = ({ label, content }: any) => {
   );
 };
 
-export default SelectInput;
+export default FormSelect;

@@ -72,22 +72,22 @@ export const FooterContent = styled("div")`
   margin-top: 16px;
 `;
 
-export const AgentHeader = styled("div")`
+export const PageHeader = styled("div")`
   display: flex;
   align-items: flex-end;
   margin-bottom: 40px;
 `;
-export const AgentContent = styled("div")`
+export const PageContent = styled("div")`
   margin: 40px 0;
 `;
-export const AgentContentHeader = styled("div")`
+export const PageContentHeader = styled("div")`
   display: flex;
   align-items: center;
   margin: 40px 0;
 `;
-export const AgentPersonalInfo = styled("div")``;
+export const PageSection = styled("div")``;
 
-export const PersonalItem = styled("div")`
+export const ItemSection = styled("div")`
   margin: 8px 0;
   display: flex;
   border: 2px solid #cad6d1;
@@ -103,7 +103,7 @@ export const CircleImage = styled("div")<{ width: string; height: string }>`
   padding: 6px;
   border-radius: 50%;
 `;
-export const PersonalItemContent = styled("div")`
+export const ItemSectionContent = styled("div")`
   margin-left: 8px;
   display: flex;
   flex-direction: column;

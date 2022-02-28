@@ -5,7 +5,7 @@ import { Button, LoadMoreIcon } from "@components/Button/styles";
 import { Container } from "@components/Layout/styles";
 import { SubTopic, Topic } from "@components/Text/styles";
 import Modal from "@components/Modal/Modal";
-import SearchInput from "@components/Form/SearchInput";
+import FormSearch from "@components/Form/FormSearch";
 
 import Collapse from "@components/Collapse/Collapse";
 import { agentsApi } from "services/agents";
@@ -48,15 +48,15 @@ const Home: NextPage = () => {
           <Modal isOpen={showModal} setIsOpen={setShowModal} title="Categorias">
             <ContainerMenuModal>
               <ItemMenuModal>
-                <ButtonMenuModal>teste</ButtonMenuModal>
+                <ButtonMenuModal>Colaboradores</ButtonMenuModal>
               </ItemMenuModal>
               <ItemMenuModal>
-                <ButtonMenuModal>teste</ButtonMenuModal>
+                <ButtonMenuModal>Cargos</ButtonMenuModal>
               </ItemMenuModal>
             </ContainerMenuModal>
           </Modal>
         )}
-        <SearchInput
+        <FormSearch
           type="text"
           label="Pesquisar por"
           placeholder="Pesquise por nome ou cpf"

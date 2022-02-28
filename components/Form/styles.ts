@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import CheckIcon from "@mui/icons-material/Check";
 
 export const Input = styled("input")`
   border: 2px solid #cad6d1;
   color: #587169;
   border-radius: 8px;
   background: #ffffff;
-  padding: 16px 16px 16px 40px;
+  padding: 16px;
   width: 100%;
   font-weight: 500;
 
@@ -15,6 +16,11 @@ export const Input = styled("input")`
     border-color: #b5f1dd;
   }
 `;
+
+export const Search = styled(Input)`
+  padding: 16px 16px 16px 40px;
+`;
+
 export const Select = styled("span")`
   display: block;
   border: 2px solid #cad6d1;
@@ -60,4 +66,29 @@ export const ArrowContainer = styled("div")`
   position: absolute;
   top: 14px;
   right: 16px;
+`;
+
+export const Checkbox = styled("input")`
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`;
+
+export const CheckboxIcon = styled(CheckIcon)`
+  height: 16px;
+  width: 16px;
+`;
+
+export const Checkmark = styled("span")<{ checked: boolean }>`
+  border-radius: 6px;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border: 2px solid ${({ checked }) => (checked ? "#1DD195" : "#CAD6D1")};
+  background: ${({ checked }) => (checked ? "#1DD195" : "#fff")};
+  color: ${({ checked }) => (checked ? "#fff" : "transparent")};
 `;

@@ -1,16 +1,16 @@
 import type { NextPage } from "next";
 
 import {
-  AgentContent,
-  AgentContentHeader,
-  AgentHeader,
-  AgentPersonalInfo,
+  PageContent,
+  PageContentHeader,
+  PageHeader,
+  PageSection,
   PersonalInfo,
   InfoAgente,
   LabelPersonalInfo,
-  PersonalItem,
+  ItemSection,
   CircleImage,
-  PersonalItemContent,
+  ItemSectionContent,
   OrganizationalData,
 } from "@components/Layout/styles";
 import { BackButton } from "@components/Button/styles";
@@ -18,20 +18,20 @@ import { SubTopic, Text, ThinText, Topic } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Image from "next/image";
-import SelectInput from "@components/Form/SelectInput";
+import FormSelect from "@components/Form/FormSelect";
 import { Container } from "@components/Layout/styles";
 import { agentsApi } from "services/agents";
 const Agent: NextPage = () => {
   return (
     <Container>
-      <AgentHeader>
+      <PageHeader>
         <BackButton>
           <ArrowBackIcon />
         </BackButton>
         <Topic>Detalhes do colaborador</Topic>
-      </AgentHeader>
-      <AgentContent>
-        <AgentContentHeader>
+      </PageHeader>
+      <PageContent>
+        <PageContentHeader>
           <CircleImage width="60" height="60">
             <Image
               src="/images/user.svg"
@@ -45,11 +45,11 @@ const Agent: NextPage = () => {
             <SubTopic>Shinji Ikari</SubTopic>
             <ThinText>shinjiikari@gmail.com</ThinText>
           </InfoAgente>
-        </AgentContentHeader>
-        <AgentPersonalInfo>
+        </PageContentHeader>
+        <PageSection>
           <Topic>Informações pessoais</Topic>
 
-          <PersonalItem>
+          <ItemSection>
             <CircleImage width="40" height="40">
               <Image
                 src="/images/id.svg"
@@ -59,13 +59,13 @@ const Agent: NextPage = () => {
                 layout="responsive"
               />
             </CircleImage>
-            <PersonalItemContent>
+            <ItemSectionContent>
               <LabelPersonalInfo>CPF</LabelPersonalInfo>
               <PersonalInfo>869 748 070 15</PersonalInfo>
-            </PersonalItemContent>
-          </PersonalItem>
+            </ItemSectionContent>
+          </ItemSection>
 
-          <PersonalItem>
+          <ItemSection>
             <CircleImage width="40" height="40">
               <Image
                 src="/images/phone-call.svg"
@@ -75,13 +75,13 @@ const Agent: NextPage = () => {
                 layout="responsive"
               />
             </CircleImage>
-            <PersonalItemContent>
+            <ItemSectionContent>
               <LabelPersonalInfo>Telefone</LabelPersonalInfo>
               <PersonalInfo>+55 82 2512 6627</PersonalInfo>
-            </PersonalItemContent>
-          </PersonalItem>
+            </ItemSectionContent>
+          </ItemSection>
 
-          <PersonalItem>
+          <ItemSection>
             <CircleImage width="40" height="40">
               <Image
                 src="/images/calendar.svg"
@@ -91,21 +91,21 @@ const Agent: NextPage = () => {
                 layout="responsive"
               />
             </CircleImage>
-            <PersonalItemContent>
+            <ItemSectionContent>
               <LabelPersonalInfo>Nascimento</LabelPersonalInfo>
               <PersonalInfo>29/11/1990</PersonalInfo>
-            </PersonalItemContent>
-          </PersonalItem>
-        </AgentPersonalInfo>
+            </ItemSectionContent>
+          </ItemSection>
+        </PageSection>
 
         <OrganizationalData>
           <Topic>Dados organizacionais</Topic>
-          <SelectInput label="Departamento" content="Comercial" />
-          <SelectInput label="Cargo" content="Gerente" />
-          <SelectInput label="Unidade" content="Unidade 1" />
-          <SelectInput label="Status" content="Ativo" />
+          <FormSelect label="Departamento" content="Comercial" />
+          <FormSelect label="Cargo" content="Gerente" />
+          <FormSelect label="Unidade" content="Unidade 1" />
+          <FormSelect label="Status" content="Ativo" />
         </OrganizationalData>
-      </AgentContent>
+      </PageContent>
     </Container>
   );
 };
