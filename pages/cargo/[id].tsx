@@ -15,6 +15,7 @@ import FormInput from "@components/Form/FormInput";
 import { useEffect, useState } from "react";
 import { rolesApi } from "services/roles";
 import {
+  ResponsiveTableContent,
   Table,
   TableBody,
   TableData,
@@ -35,7 +36,9 @@ const Agent: NextPage = () => {
   useEffect(() => {
     rolesApi.getRoleById(1).then((response) => {
       console.log(response.data.role);
-      console.log(response.data.role.grouprules[0].permissions.includes('write'))
+      console.log(
+        response.data.role.grouprules[0].permissions.includes("write")
+      );
       setRole(response.data.role);
     });
   }, []);
@@ -57,35 +60,43 @@ const Agent: NextPage = () => {
 
             <FormInput type="text" label="Cargo" />
           </PageSection>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableHeadData>Cargo</TableHeadData>
-                <TableHeadData>Ler</TableHeadData>
-                <TableHeadData>Editar</TableHeadData>
-                <TableHeadData>Comentar</TableHeadData>
-              </TableRow>
-            </TableHead>
+          <ResponsiveTableContent>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableHeadData>Cargo</TableHeadData>
+                  <TableHeadData>Ler</TableHeadData>
+                  <TableHeadData>Editar</TableHeadData>
+                  <TableHeadData>Comentar</TableHeadData>
+                </TableRow>
+              </TableHead>
 
-            <TableBody>
-              {role?.grouprules.map((row, rowIndex): any => {
-                return (
-                  <TableRow key={rowIndex}>
-                    <TableData>{row.role}</TableData>
-                    <TableData>
-                      <FormCheckbox checked={row.permissions.includes('read')} />
-                    </TableData>
-                    <TableData>
-                      <FormCheckbox checked={row.permissions.includes('write')} />
-                    </TableData>
-                    <TableData>
-                      <FormCheckbox checked={row.permissions.includes('delete')} />
-                    </TableData>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+              <TableBody>
+                {role?.grouprules.map((row: any, rowIndex: any) => {
+                  return (
+                    <TableRow key={rowIndex}>
+                      <TableData>{row.role}</TableData>
+                      <TableData>
+                        <FormCheckbox
+                          checked={row.permissions.includes("read")}
+                        />
+                      </TableData>
+                      <TableData>
+                        <FormCheckbox
+                          checked={row.permissions.includes("write")}
+                        />
+                      </TableData>
+                      <TableData>
+                        <FormCheckbox
+                          checked={row.permissions.includes("delete")}
+                        />
+                      </TableData>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </ResponsiveTableContent>
         </PageContent>
       </ContainerCard>
     </>

@@ -85,13 +85,20 @@ export const CloseButton = styled("button")`
   background: transparent;
 `;
 
-export const ContainerMenuModal = styled("ul")`
-  list-style-type: none;
+export const ModalSection = styled("div")`
+  margin-top: 10px;
 `;
-export const ItemMenuModal = styled("li")`
-  background: #ffffff;
+
+export const Menu = styled("nav")``;
+
+export const MenuContainer = styled("ol")`
+  list-style: none;
+  margin-top: 10px;
 `;
-export const ButtonMenuModal = styled("button")`
+
+export const MenuItem = styled("li")``;
+
+export const MenuButton = styled("button")`
   background: transparent;
   width: 100%;
   border: none;

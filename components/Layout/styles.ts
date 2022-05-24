@@ -5,10 +5,10 @@ export const Background = styled("main")`
   background: #f8faf9;
 `;
 
-export const Content = styled('div')`
+export const Content = styled("div")`
   padding: 0 5px;
   margin: 0 auto;
-`
+`;
 
 export const ContainerCard = styled("div")`
   margin: 20px auto 40px;
@@ -80,13 +80,11 @@ export const FooterContent = styled("div")`
   margin-top: 16px;
 `;
 
-export const PageHeader = styled(HomeHeader)`
-  margin-left: auto;
+export const PageHeader = styled("div")`
   display: flex;
-  align-items: flex-end;
+  margin: 40px auto 24px 16px;
 `;
-export const PageContent = styled("div")`
-`;
+export const PageContent = styled("div")``;
 export const PageContentHeader = styled("div")`
   display: flex;
   align-items: center;
@@ -98,15 +96,19 @@ export const ItemSection = styled("div")`
   margin: 8px 0;
   display: flex;
   border: 2px solid #cad6d1;
-  background: #F5FAF8;
+  background: #f5faf8;
   padding: 16px;
   border-radius: 8px;
 `;
-export const CircleImage = styled("div") <{ width: string; height: string; padding: string; }>`
+export const CircleImage = styled("div")<{
+  width: string;
+  height: string;
+  padding: string;
+}>`
   position: relative;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  background: #EAEFED;
+  background: #eaefed;
   padding: ${({ padding }) => padding}px;
   border-radius: 50%;
 `;

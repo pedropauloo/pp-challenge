@@ -2,26 +2,20 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Button, LoadMoreIcon } from "@components/Button/styles";
-import { ContainerCard } from "@components/Layout/styles";
+import { ContainerCard, PageHeader } from "@components/Layout/styles";
 import { SubTopic, Topic } from "@components/Text/styles";
-import Modal from "@components/Modal/Modal";
+import ModalFilter from "@components/Modal/ModalFilter";
 import FormSearch from "@components/Form/FormSearch";
 
 import Collapse from "@components/Collapse/Collapse";
 import { agentsApi } from "services/agents";
 import { HeaderCollapse } from "@components/Agent/HeaderCollapse";
 import { ContentCollapse } from "@components/Agent/ContentCollapse";
-import {
-  ButtonMenuModal,
-  ContainerMenuModal,
-  ItemMenuModal,
-} from "@components/Modal/styles";
-import { HomeHeader } from "@components/Layout/styles";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const Home: NextPage = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [modalFilter, setModalFilter] = useState(false);
   const [agents, setAgents] = useState<any[] | null>(null);
 
   useEffect(() => {
@@ -33,29 +27,31 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <HomeHeader>
+      <PageHeader>
         <Topic>Colaboradores</Topic>
-      </HomeHeader>
+      </PageHeader>
       <ContainerCard>
         <Button
           fontWeight="400"
           contentPosition="space-between"
-          onClick={() => setShowModal(true)}
+          onClick={() => setModalFilter(true)}
         >
           Colaboradores <MoreVertIcon />
         </Button>
-        {showModal && (
-          <Modal isOpen={showModal} setIsOpen={setShowModal} title="Categorias">
-            <ContainerMenuModal>
-              <ItemMenuModal>
-                <ButtonMenuModal>Colaboradores</ButtonMenuModal>
-              </ItemMenuModal>
-              <ItemMenuModal>
-                <ButtonMenuModal>Cargos</ButtonMenuModal>
-              </ItemMenuModal>
-            </ContainerMenuModal>
-          </Modal>
+
+        {modalFilter && (
+          <ModalFilter
+            isOpen={modalFilter}
+            setIsOpen={setModalFilter}
+            title="Categorias"
+          >
+            <ModalFilter.Menu>
+              <ModalFilter.Menu.Item>Colaboradores</ModalFilter.Menu.Item>
+              <ModalFilter.Menu.Item>Cargo</ModalFilter.Menu.Item>
+            </ModalFilter.Menu>
+          </ModalFilter>
         )}
+
         <FormSearch
           type="text"
           label="Pesquisar por"

@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
+export const ResponsiveTableContent = styled("div")`
+  overflow-x: auto;
+`;
 
 export const Table = styled("table")`
   width: 100%;
   border: none;
   border-spacing: 0;
-  font-size: 13px;
+  font-size: 12px;
   color: #587169;
 `;
 export const TableHead = styled("thead")`

@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
-import { CloseButton, ContainerModal, Content, Wrapper } from "./styles";
+import {
+  CloseButton,
+  ContainerModal,
+  Content,
+  MenuContainer,
+  ModalSection,
+  Wrapper,
+  MenuItem,
+  Menu as MenuModal,
+  MenuButton,
+} from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { SubTopic } from "@components/Text/styles";
 
-const Modal = ({ isOpen, setIsOpen, title, children }: any) => {
+const ModalFilter = ({ isOpen, setIsOpen, title, children }: any) => {
   const [openContent, setOpenContent] = useState(true);
 
   useEffect(() => {
@@ -28,4 +38,23 @@ const Modal = ({ isOpen, setIsOpen, title, children }: any) => {
   );
 };
 
-export default Modal;
+const Menu = ({ children }: any) => {
+  return (
+    <MenuModal>
+      <MenuContainer>{children}</MenuContainer>
+    </MenuModal>
+  );
+};
+
+const Item = ({ children }: any) => {
+  return (
+    <MenuItem>
+      <MenuButton>{children}</MenuButton>
+    </MenuItem>
+  );
+};
+
+Menu.Item = Item;
+ModalFilter.Menu = Menu;
+
+export default ModalFilter;

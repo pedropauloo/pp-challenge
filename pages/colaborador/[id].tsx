@@ -24,7 +24,6 @@ import { agentsApi } from "services/agents";
 const Agent: NextPage = () => {
   return (
     <>
-
       <PageHeader>
         <BackButton>
           <ArrowBackIcon />
