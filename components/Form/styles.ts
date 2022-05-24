@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
 import CheckIcon from "@mui/icons-material/Check";
 
+export const FormComponent = styled("form")`
+  width: 100%;
+`;
+
 export const Input = styled("input")`
   border: 2px solid #cad6d1;
   color: #587169;
   border-radius: 8px;
-  background: #FFF;
+  background: #fff;
   padding: 16px;
   width: 100%;
   font-weight: 500;
@@ -26,7 +30,7 @@ export const Select = styled("span")`
   border: 2px solid #cad6d1;
   color: #587169;
   border-radius: 8px;
-  background: #F5FAF8;
+  background: #f5faf8;
   padding: 16px;
   width: 100%;
   font-weight: 500;
@@ -83,7 +87,7 @@ export const CheckboxIcon = styled(CheckIcon)`
   width: 16px;
 `;
 
-export const Checkmark = styled("span") <{ checked: boolean }>`
+export const Checkmark = styled("span")<{ checked: boolean }>`
   border-radius: 6px;
   display: block;
   height: 20px;

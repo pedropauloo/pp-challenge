@@ -1,13 +1,18 @@
-import { Search, Label, ContainerInput, SearchIconContainer } from "./styles";
+import {
+  Search as SearchForm,
+  Label,
+  ContainerInput,
+  SearchIconContainer,
+} from "./styles";
 
 import SearchIcon from "@mui/icons-material/Search";
 
-const FormSearch = (props: any) => {
+const Search = (props: any) => {
   const { label, ...input } = props;
   return (
     <ContainerInput>
       <Label>{label}</Label>
-      <Search {...input} />
+      <SearchForm {...input} />
       <SearchIconContainer>
         <SearchIcon />
       </SearchIconContainer>
@@ -15,4 +20,4 @@ const FormSearch = (props: any) => {
   );
 };
 
-export default FormSearch;
+export default Search;

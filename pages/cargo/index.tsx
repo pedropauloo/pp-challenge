@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Button, LoadMoreIcon } from "@components/Button/styles";
-import { ContainerCard, PageHeader } from "@components/Layout/styles";
-import { SubTopic, Topic } from "@components/Text/styles";
+import { PageHeader } from "@components/Layout/styles";
+import { SubTopic } from "@components/Text/styles";
 import ModalFilter from "@components/Modal/ModalFilter";
-import FormSearch from "@components/Form/FormSearch";
+import FormSearch from "@components/Form/Search";
 
 import Collapse from "@components/Collapse/Collapse";
 import { rolesApi } from "services/roles";
@@ -13,6 +13,7 @@ import { HeaderCollapse } from "@components/Role/HeaderCollapse";
 import { ContentCollapse } from "@components/Role/ContentCollapse";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { CardBody } from "@components/Card/styles";
 
 const Cargo: NextPage = () => {
   const [modalFilter, setModalFilter] = useState(false);
@@ -28,9 +29,9 @@ const Cargo: NextPage = () => {
   return (
     <div>
       <PageHeader>
-        <Topic>Cargos</Topic>
+        <h1>Cargos</h1>
       </PageHeader>
-      <ContainerCard>
+      <CardBody>
         <Button
           fontWeight="400"
           contentPosition="space-between"
@@ -52,11 +53,11 @@ const Cargo: NextPage = () => {
           </ModalFilter>
         )}
 
-        <FormSearch
+        {/* <FormSearch
           type="text"
           label="Pesquisar por"
           placeholder="Pesquise por nome ou cpf"
-        />
+        /> */}
         <SubTopic>Listagem de cargos</SubTopic>
 
         {agents?.map((item, itemIndex) => {
@@ -78,7 +79,7 @@ const Cargo: NextPage = () => {
           <LoadMoreIcon />
           Carregar Mais
         </Button>
-      </ContainerCard>
+      </CardBody>
     </div>
   );
 };

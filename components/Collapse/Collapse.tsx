@@ -36,7 +36,6 @@ const Collapse = ({ header, children, open }: any) => {
           />
         </CollapseButton>
       </CollapseHeader>
-
       <CollpaseContent style={{ height }}>
         <div ref={ref}>
           <div>{isOpen && <div>{children}</div>}</div>

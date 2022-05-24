@@ -3,24 +3,12 @@ import Image from "next/image";
 
 export const Background = styled("main")`
   background: #f8faf9;
+  min-height: 100vh;
 `;
 
 export const Content = styled("div")`
   padding: 0 5px;
   margin: 0 auto;
-`;
-
-export const ContainerCard = styled("div")`
-  margin: 20px auto 40px;
-  max-width: 960px;
-  padding: 20px 16px;
-  background: #ffffff;
-  box-shadow: 0px 4px 8px rgba(165, 171, 179, 0.16);
-  border-radius: 8px;
-`;
-
-export const HomeHeader = styled("div")`
-  margin: 40px auto 24px 16px;
 `;
 
 export const AvatarCircle = styled(Image)`
@@ -80,10 +68,6 @@ export const FooterContent = styled("div")`
   margin-top: 16px;
 `;
 
-export const PageHeader = styled("div")`
-  display: flex;
-  margin: 40px auto 24px 16px;
-`;
 export const PageContent = styled("div")``;
 export const PageContentHeader = styled("div")`
   display: flex;
@@ -136,4 +120,11 @@ export const OrganizationalData = styled("div")`
   border: 2px solid #eaefed;
   border-radius: 8px;
   padding: 24px;
+`;
+
+// ----- Page Content -----
+
+export const PageHeader = styled("div")`
+  display: flex;
+  margin: 40px auto 24px 16px;
 `;

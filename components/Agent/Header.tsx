@@ -5,7 +5,7 @@ import {
   AvatarName,
 } from "@components/Layout/styles";
 
-export const HeaderCollapse = ({ avatarImage, avatarName, altImage }: any) => {
+export const Header = ({ avatarImage, avatarName, altImage }: any) => {
   return (
     <>
       <Label>Nome completo</Label>

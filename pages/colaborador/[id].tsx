@@ -18,7 +18,7 @@ import { SubTopic, Text, ThinText, Topic } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Image from "next/image";
-import FormSelect from "@components/Form/FormSelect";
+import FormSelect from "@components/Form/Select";
 import { ContainerCard } from "@components/Layout/styles";
 import { agentsApi } from "services/agents";
 const Agent: NextPage = () => {

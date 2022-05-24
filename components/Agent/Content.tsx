@@ -9,7 +9,7 @@ import {
   FooterContent,
 } from "@components/Layout/styles";
 
-export const ContentCollapse = ({
+export const Content = ({
   departament,
   role,
   branch,
