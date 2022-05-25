@@ -1,10 +1,8 @@
+import Image from "next/image";
 import type { NextPage } from "next";
 
 import {
-  PageContent,
   PageContentHeader,
-  PageHeader,
-  PageSection,
   PersonalInfo,
   InfoAgente,
   LabelPersonalInfo,
@@ -14,41 +12,44 @@ import {
   OrganizationalData,
 } from "@components/Layout/styles";
 import { BackButton } from "@components/Button/styles";
-import { SubTopic, Text, ThinText, Topic } from "@components/Text/styles";
+import { Subtitle, Text, ThinText, Title } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Image from "next/image";
-import FormSelect from "@components/Form/Select";
-import { ContainerCard } from "@components/Layout/styles";
+import Page from "@components/Layout/Page";
+import Card from "@components/Card/Card";
+import Form from "@components/Form/Form";
+
 import { agentsApi } from "services/agents";
+
 const Agent: NextPage = () => {
   return (
-    <>
-      <PageHeader>
+    <Page>
+      <Page.Header>
         <BackButton>
           <ArrowBackIcon />
         </BackButton>
-        <Topic>Detalhes do colaborador</Topic>
-      </PageHeader>
-      <ContainerCard>
-        <PageContent>
-          <PageContentHeader>
-            <CircleImage width="80" height="80" padding="16">
-              <Image
-                src="/images/user.svg"
-                alt="teste"
-                width={1}
-                height={1}
-                layout="responsive"
-              />
-            </CircleImage>
-            <InfoAgente>
-              <SubTopic>Shinji Ikari</SubTopic>
-              <ThinText>shinjiikari@gmail.com</ThinText>
-            </InfoAgente>
-          </PageContentHeader>
-          <PageSection>
-            <Topic>Informações pessoais</Topic>
+        <Title>Detalhes do colaborador</Title>
+      </Page.Header>
+      <Page.Body>
+        <Card>
+          <Card.Body>
+            <PageContentHeader>
+              <CircleImage width="80" height="80" padding="16">
+                <Image
+                  src="/images/user.svg"
+                  alt="teste"
+                  width={1}
+                  height={1}
+                  layout="responsive"
+                />
+              </CircleImage>
+              <InfoAgente>
+                <Subtitle>Shinji Ikari</Subtitle>
+                <ThinText>shinjiikari@gmail.com</ThinText>
+              </InfoAgente>
+            </PageContentHeader>
+
+            <Title>Informações pessoais</Title>
 
             <ItemSection>
               <CircleImage width="40" height="40" padding="8">
@@ -97,18 +98,18 @@ const Agent: NextPage = () => {
                 <PersonalInfo>29/11/1990</PersonalInfo>
               </ItemSectionContent>
             </ItemSection>
-          </PageSection>
 
-          <OrganizationalData>
-            <Topic>Dados organizacionais</Topic>
-            <FormSelect label="Departamento" content="Comercial" />
-            <FormSelect label="Cargo" content="Gerente" />
-            <FormSelect label="Unidade" content="Unidade 1" />
-            <FormSelect label="Status" content="Ativo" />
-          </OrganizationalData>
-        </PageContent>
-      </ContainerCard>
-    </>
+            <OrganizationalData>
+              <Title>Dados organizacionais</Title>
+              <Form.Select label="Departamento" content="Comercial" />
+              <Form.Select label="Cargo" content="Gerente" />
+              <Form.Select label="Unidade" content="Unidade 1" />
+              <Form.Select label="Status" content="Ativo" />
+            </OrganizationalData>
+          </Card.Body>
+        </Card>
+      </Page.Body>
+    </Page>
   );
 };
 

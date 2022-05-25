@@ -1,19 +1,17 @@
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 
-import {
-  PageContent,
-  PageHeader,
-  PageSection,
-} from "@components/Layout/styles";
 import { BackButton } from "@components/Button/styles";
-import { Topic } from "@components/Text/styles";
+import { Title } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import FormSelect from "@components/Form/FormSelect";
-import { ContainerCard } from "@components/Layout/styles";
-import FormInput from "@components/Form/FormInput";
-import { useEffect, useState } from "react";
+
+import Page from "@components/Layout/Page";
+import Form from "@components/Form/Form";
+import Card from "@components/Card/Card";
+
 import { rolesApi } from "services/roles";
+
 import {
   ResponsiveTableContent,
   Table,
@@ -23,15 +21,9 @@ import {
   TableHeadData,
   TableRow,
 } from "@components/Table/styles";
-import FormCheckbox from "@components/Form/FormCheckbox";
 
 const Agent: NextPage = () => {
   const [role, setRole] = useState(null);
-  const [checked, setChecked] = useState(false);
-
-  function handlerCheckbox() {
-    setChecked(!checked);
-  }
 
   useEffect(() => {
     rolesApi.getRoleById(1).then((response) => {
@@ -44,62 +36,63 @@ const Agent: NextPage = () => {
   }, []);
 
   return (
-    <>
-      <PageHeader>
+    <Page>
+      <Page.Header>
         <BackButton>
           <ArrowBackIcon />
         </BackButton>
-        <Topic>Novo cargo</Topic>
-      </PageHeader>
-      <ContainerCard>
-        <PageContent>
-          <PageSection>
-            <Topic>Dados do cargo</Topic>
-
-            <FormSelect label="Departamento" content="Comercial" />
-
-            <FormInput type="text" label="Cargo" />
-          </PageSection>
-          <ResponsiveTableContent>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableHeadData>Cargo</TableHeadData>
-                  <TableHeadData>Ler</TableHeadData>
-                  <TableHeadData>Editar</TableHeadData>
-                  <TableHeadData>Comentar</TableHeadData>
-                </TableRow>
-              </TableHead>
-
-              <TableBody>
-                {role?.grouprules.map((row: any, rowIndex: any) => {
-                  return (
-                    <TableRow key={rowIndex}>
-                      <TableData>{row.role}</TableData>
-                      <TableData>
-                        <FormCheckbox
-                          checked={row.permissions.includes("read")}
-                        />
-                      </TableData>
-                      <TableData>
-                        <FormCheckbox
-                          checked={row.permissions.includes("write")}
-                        />
-                      </TableData>
-                      <TableData>
-                        <FormCheckbox
-                          checked={row.permissions.includes("delete")}
-                        />
-                      </TableData>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </ResponsiveTableContent>
-        </PageContent>
-      </ContainerCard>
-    </>
+        <Title>Novo cargo</Title>
+      </Page.Header>
+      <Page.Body>
+        <Card>
+          <Card.Header>
+            <Title>Dados do cargo</Title>
+            <Form>
+              <Form.Select label="Departamento" content="Comercial" />
+              <Form.Input type="text" label="Cargo" />
+            </Form>
+          </Card.Header>
+          <Card.Body>
+            <ResponsiveTableContent>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableHeadData>Cargo</TableHeadData>
+                    <TableHeadData>Ler</TableHeadData>
+                    <TableHeadData>Editar</TableHeadData>
+                    <TableHeadData>Comentar</TableHeadData>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {role?.grouprules.map((row: any, rowIndex: any) => {
+                    return (
+                      <TableRow key={rowIndex}>
+                        <TableData>{row.role}</TableData>
+                        <TableData>
+                          <Form.Checkbox
+                            checked={row.permissions.includes("read")}
+                          />
+                        </TableData>
+                        <TableData>
+                          <Form.Checkbox
+                            checked={row.permissions.includes("write")}
+                          />
+                        </TableData>
+                        <TableData>
+                          <Form.Checkbox
+                            checked={row.permissions.includes("delete")}
+                          />
+                        </TableData>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </ResponsiveTableContent>
+          </Card.Body>
+        </Card>
+      </Page.Body>
+    </Page>
   );
 };
 

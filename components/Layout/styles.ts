@@ -36,44 +36,19 @@ export const Label = styled("span")`
   font-size: 12px;
 `;
 
-export const Info = styled(Label)`
-  font-weight: 400;
-`;
-export const InfoContent = styled("div")`
-  display: flex;
-  width: 100%;
-
-  div {
-    width: 50%;
-    margin: 10px 0;
-  }
-`;
-
 export const AvatarName = styled(Label)`
   margin-left: 8px;
 `;
 export const RoleName = styled(Label)``;
 
-export const Badge = styled("span")`
-  background: #b5f1dd;
-  border-radius: 80px;
-  font-size: 14px;
-  padding: 4px 18px;
-  font-weight: 500;
-  color: #34423d;
-`;
-
-export const FooterContent = styled("div")`
-  width: 100%;
-  margin-top: 16px;
-`;
-
 export const PageContent = styled("div")``;
+
 export const PageContentHeader = styled("div")`
   display: flex;
   align-items: center;
   margin: 20px 0;
 `;
+
 export const PageSection = styled("div")``;
 
 export const ItemSection = styled("div")`
@@ -84,6 +59,7 @@ export const ItemSection = styled("div")`
   padding: 16px;
   border-radius: 8px;
 `;
+
 export const CircleImage = styled("div")<{
   width: string;
   height: string;
@@ -96,16 +72,19 @@ export const CircleImage = styled("div")<{
   padding: ${({ padding }) => padding}px;
   border-radius: 50%;
 `;
+
 export const ItemSectionContent = styled("div")`
   margin-left: 8px;
   display: flex;
   flex-direction: column;
 `;
+
 export const LabelPersonalInfo = styled("span")`
   font-size: 12px;
   font-weight: 400;
   color: #587169;
 `;
+
 export const PersonalInfo = styled("span")`
   font-size: 14px;
   font-weight: 600;

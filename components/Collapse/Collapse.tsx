@@ -5,16 +5,23 @@ import {
   CollapseButton,
   CollapseContainer,
   CollapseHeader,
-  CollapseInfo,
-  CollpaseContent,
+  CollapseFooter,
+  CollapseContent,
+  CollapseSection,
+  SectionLabel,
+  SectionItem,
+  SectionBadge,
+  HeaderContent,
+  CollapseBody,
 } from "./styles";
 
 const Collapse = ({ header, children, open }: any) => {
   const [isOpen, setIsOpen] = useState(open);
   const [height, setHeight] = useState<number | undefined>(0);
+
   const rotateIcon = `rotate(${isOpen ? "-90" : "90"}deg)`;
 
-  const showCollapseContent = () => {
+  const toggleCollapse = () => {
     setIsOpen((prev: boolean) => !prev);
   };
 
@@ -28,21 +35,44 @@ const Collapse = ({ header, children, open }: any) => {
   return (
     <CollapseContainer open={isOpen}>
       <CollapseHeader>
-        <CollapseInfo>{header}</CollapseInfo>
-        <CollapseButton type="button" onClick={showCollapseContent}>
+        <HeaderContent>{header}</HeaderContent>
+        <CollapseButton type="button" onClick={toggleCollapse}>
           <ChevronRightIcon
             style={{ transform: rotateIcon }}
             fontSize="large"
           />
         </CollapseButton>
       </CollapseHeader>
-      <CollpaseContent style={{ height }}>
-        <div ref={ref}>
-          <div>{isOpen && <div>{children}</div>}</div>
-        </div>
-      </CollpaseContent>
+      <CollapseContent style={{ height }}>
+        <div ref={ref}>{isOpen && <CollapseBody>{children}</CollapseBody>}</div>
+      </CollapseContent>
     </CollapseContainer>
   );
 };
+
+const Footer = ({ children }: any) => {
+  return <CollapseFooter>{children}</CollapseFooter>;
+};
+Collapse.Footer = Footer;
+
+const Badge = ({ children }: any) => {
+  return <SectionBadge>{children}</SectionBadge>;
+};
+Collapse.Badge = Badge;
+
+const Label = ({ children }: any) => {
+  return <SectionLabel>{children}</SectionLabel>;
+};
+Collapse.Label = Label;
+
+const Item = ({ children }: any) => {
+  return <SectionItem>{children}</SectionItem>;
+};
+Collapse.Item = Item;
+
+const Section = ({ children }: any) => {
+  return <CollapseSection>{children}</CollapseSection>;
+};
+Collapse.Section = Section;
 
 export default Collapse;

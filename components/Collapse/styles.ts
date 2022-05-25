@@ -12,7 +12,7 @@ export const CollapseHeader = styled("div")`
   justify-content: space-between;
 `;
 
-export const CollapseInfo = styled("div")`
+export const HeaderContent = styled("div")`
   font-size: 16px;
   font-weight: 600;
   color: #587169;
@@ -27,7 +27,47 @@ export const CollapseButton = styled("button")`
   }
 `;
 
-export const CollpaseContent = styled("div")`
+export const CollapseContent = styled("div")`
   overflow: hidden;
   transition: height 0.2s ease-in-out;
+`;
+
+export const CollapseBody = styled("div")`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const CollapseFooter = styled("div")`
+  width: 100%;
+  margin-top: 16px;
+`;
+
+export const CollapseSection = styled("section")`
+  display: flex;
+  width: 100%;
+
+  div {
+    width: 50%;
+    margin: 10px 0;
+  }
+`;
+
+export const SectionLabel = styled("span")`
+  display: block;
+  color: #587169;
+  font-weight: 600;
+  font-size: 12px;
+`;
+
+export const SectionItem = styled(SectionLabel)`
+  font-weight: 400;
+`;
+
+export const SectionBadge = styled("span")`
+  background: #b5f1dd;
+  border-radius: 80px;
+  font-size: 14px;
+  padding: 4px 18px;
+  font-weight: 500;
+  color: #34423d;
 `;

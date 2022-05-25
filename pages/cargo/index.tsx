@@ -1,22 +1,23 @@
+import Image from "next/image";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Button, LoadMoreIcon } from "@components/Button/styles";
-import { PageHeader } from "@components/Layout/styles";
-import { SubTopic } from "@components/Text/styles";
-import ModalFilter from "@components/Modal/ModalFilter";
-import FormSearch from "@components/Form/Search";
+import { Title, Subtitle } from "@components/Text/styles";
 
+import Modal from "@components/Modal/Modal";
+import Menu from "@components/Menu/Menu";
 import Collapse from "@components/Collapse/Collapse";
-import { rolesApi } from "services/roles";
 import { HeaderCollapse } from "@components/Role/HeaderCollapse";
-import { ContentCollapse } from "@components/Role/ContentCollapse";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { CardBody } from "@components/Card/styles";
+
+import { rolesApi } from "services/roles";
+import Page from "@components/Layout/Page";
+import Card from "@components/Card/Card";
 
 const Cargo: NextPage = () => {
-  const [modalFilter, setModalFilter] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [agents, setAgents] = useState<any[] | null>(null);
 
   useEffect(() => {
@@ -27,60 +28,79 @@ const Cargo: NextPage = () => {
   }, []);
 
   return (
-    <div>
-      <PageHeader>
-        <h1>Cargos</h1>
-      </PageHeader>
-      <CardBody>
-        <Button
-          fontWeight="400"
-          contentPosition="space-between"
-          onClick={() => setModalFilter(true)}
-        >
-          Cargos <MoreVertIcon />
-        </Button>
-
-        {modalFilter && (
-          <ModalFilter
-            isOpen={modalFilter}
-            setIsOpen={setModalFilter}
-            title="Categorias"
-          >
-            <ModalFilter.Menu>
-              <ModalFilter.Menu.Item>Colaboradores</ModalFilter.Menu.Item>
-              <ModalFilter.Menu.Item>Cargo</ModalFilter.Menu.Item>
-            </ModalFilter.Menu>
-          </ModalFilter>
-        )}
-
-        {/* <FormSearch
-          type="text"
-          label="Pesquisar por"
-          placeholder="Pesquise por nome ou cpf"
-        /> */}
-        <SubTopic>Listagem de cargos</SubTopic>
-
-        {agents?.map((item, itemIndex) => {
-          return (
-            <Collapse
-              title="Nome completo"
-              key={itemIndex}
-              header={<HeaderCollapse roleName={item.name} />}
-              open={false}
+    <Page>
+      <Page.Header>
+        <Title>Cargos</Title>
+      </Page.Header>
+      <Page.Body>
+        <Card>
+          <Card.Header>
+            <Button
+              fontWeight="400"
+              contentPosition="space-between"
+              onClick={() => setModalOpen(true)}
             >
-              <ContentCollapse
-                departament={item.departament}
-                agentsQuantity={item.agents_quantity}
-              />
-            </Collapse>
-          );
-        })}
-        <Button contentPosition="center" fontWeight="600">
-          <LoadMoreIcon />
-          Carregar Mais
-        </Button>
-      </CardBody>
-    </div>
+              Cargos <MoreVertIcon />
+            </Button>
+
+            {modalOpen && (
+              <Modal
+                isOpen={modalOpen}
+                setIsOpen={setModalOpen}
+                title="Categorias"
+              >
+                <Menu>
+                  <Menu.Item>Colaboradores</Menu.Item>
+                  <Menu.Item>Cargo</Menu.Item>
+                </Menu>
+              </Modal>
+            )}
+          </Card.Header>
+          <Card.Body>
+            <Subtitle>Listagem de cargos</Subtitle>
+
+            {agents?.map((item, itemIndex) => {
+              return (
+                <Collapse
+                  title="Nome completo"
+                  key={itemIndex}
+                  header={<HeaderCollapse roleName={item.name} />}
+                  open={false}
+                >
+                  <Collapse.Section>
+                    <div>
+                      <Collapse.Label>Departamento</Collapse.Label>
+                      <Collapse.Item>{item.departament}</Collapse.Item>
+                    </div>
+
+                    <div>
+                      <Collapse.Label>Colaboradores</Collapse.Label>
+                      <Collapse.Item>{item.agentsQuantity}</Collapse.Item>
+                    </div>
+                  </Collapse.Section>
+
+                  <Collapse.Footer>
+                    <Button contentPosition="center" fontWeight="600">
+                      <Image
+                        src="/images/file-plus.svg"
+                        alt="Icone Ações"
+                        width={24}
+                        height={24}
+                      />
+                      Ações
+                    </Button>
+                  </Collapse.Footer>
+                </Collapse>
+              );
+            })}
+            <Button contentPosition="center" fontWeight="600">
+              <LoadMoreIcon />
+              Carregar Mais
+            </Button>
+          </Card.Body>
+        </Card>
+      </Page.Body>
+    </Page>
   );
 };
 

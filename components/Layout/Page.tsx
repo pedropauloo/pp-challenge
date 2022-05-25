@@ -1,7 +1,7 @@
 import { PageHeader } from "./styles";
 
 const Page = ({ children }: any) => {
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 const Header = ({ children }: any) => {
@@ -11,7 +11,7 @@ const Header = ({ children }: any) => {
 Page.Header = Header;
 
 const Body = ({ children }: any) => {
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 Page.Body = Body;

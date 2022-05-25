@@ -11,13 +11,14 @@ export const ThinText = styled("span")`
   font-size: 14px;
 `;
 
-export const Topic = styled("h1")`
+export const Title = styled("h1")`
   font-weight: 600;
   font-size: 20px;
   color: #34423d;
 `;
 
-export const Subtopic = styled("h2")`
+export const Subtitle = styled("h2")`
+  margin: 20px 0;
   font-size: 18px;
   font-weight: 600;
   color: #34423d;

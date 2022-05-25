@@ -14,6 +14,7 @@ export const CardHeader = styled("div")`
   align-items: center;
   margin-top: 8px;
   border-bottom: 2px solid #eaefed;
+  flex-wrap: wrap;
 `;
 
 export const CardBody = styled("div")`
