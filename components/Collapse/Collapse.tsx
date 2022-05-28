@@ -10,12 +10,11 @@ import {
   CollapseSection,
   SectionLabel,
   SectionItem,
-  SectionBadge,
   HeaderContent,
   CollapseBody,
 } from "./styles";
 
-const Collapse = ({ header, children, open }: any) => {
+const Collapse = ({ disabled, header, children, open }: any) => {
   const [isOpen, setIsOpen] = useState(open);
   const [height, setHeight] = useState<number | undefined>(0);
 
@@ -33,7 +32,7 @@ const Collapse = ({ header, children, open }: any) => {
   }, [isOpen]);
 
   return (
-    <CollapseContainer open={isOpen}>
+    <CollapseContainer open={isOpen} disabled={disabled}>
       <CollapseHeader>
         <HeaderContent>{header}</HeaderContent>
         <CollapseButton type="button" onClick={toggleCollapse}>
@@ -43,30 +42,36 @@ const Collapse = ({ header, children, open }: any) => {
           />
         </CollapseButton>
       </CollapseHeader>
+
       <CollapseContent style={{ height }}>
-        <div ref={ref}>{isOpen && <CollapseBody>{children}</CollapseBody>}</div>
+        <div ref={ref}>{isOpen && children}</div>
       </CollapseContent>
     </CollapseContainer>
   );
 };
 
-const Footer = ({ children }: any) => {
-  return <CollapseFooter>{children}</CollapseFooter>;
+const Body = ({ children, className }: any) => {
+  return <CollapseBody className={className}>{children}</CollapseBody>;
+};
+Collapse.Body = Body;
+
+const Footer = ({ children, className }: any) => {
+  return <CollapseFooter className={className}>{children}</CollapseFooter>;
 };
 Collapse.Footer = Footer;
 
-const Label = ({ children }: any) => {
-  return <SectionLabel>{children}</SectionLabel>;
+const Label = ({ className, children }: any) => {
+  return <SectionLabel className={className}>{children}</SectionLabel>;
 };
 Collapse.Label = Label;
 
-const Item = ({ children }: any) => {
-  return <SectionItem>{children}</SectionItem>;
+const Item = ({ children, className }: any) => {
+  return <SectionItem className={className}>{children}</SectionItem>;
 };
 Collapse.Item = Item;
 
-const Section = ({ children }: any) => {
-  return <CollapseSection>{children}</CollapseSection>;
+const Section = ({ children, className }: any) => {
+  return <CollapseSection className={className}>{children}</CollapseSection>;
 };
 Collapse.Section = Section;
 

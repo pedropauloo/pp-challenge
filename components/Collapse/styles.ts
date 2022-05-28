@@ -1,12 +1,5 @@
 import styled from "@emotion/styled";
 
-export const CollapseContainer = styled("div")<{ open: boolean }>`
-  border: 2px solid ${({ open }) => (!open ? "#eaefed" : "#B5F1DD")};
-  border-radius: 8px;
-  margin: 8px 0;
-  padding: 24px 16px;
-`;
-
 export const CollapseHeader = styled("div")`
   display: flex;
   justify-content: space-between;
@@ -15,13 +8,13 @@ export const CollapseHeader = styled("div")`
 export const HeaderContent = styled("div")`
   font-size: 16px;
   font-weight: 600;
-  color: #587169;
 `;
 
 export const CollapseButton = styled("button")`
+  color: #587169;
   border: none;
   background: transparent;
-  color: #587169;
+
   &:hover {
     cursor: pointer;
   }
@@ -53,13 +46,29 @@ export const CollapseSection = styled("section")`
 `;
 
 export const SectionLabel = styled("span")`
-  display: block;
   color: #587169;
+  display: block;
   font-weight: 600;
   font-size: 12px;
 `;
 
-export const SectionItem = styled(SectionLabel)`
+export const SectionItem = styled("span")`
+  display: block;
+  font-size: 12px;
   font-weight: 400;
 `;
 
+export const CollapseContainer = styled("div")<{
+  open: boolean;
+  disabled?: boolean;
+}>`
+  border: 2px solid ${({ open }) => (!open ? "#eaefed" : "#B5F1DD")};
+  border-radius: 8px;
+  margin: 8px 0;
+  padding: 24px 16px;
+  color: #587169;
+
+  ${SectionItem}, img {
+    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  }
+`;

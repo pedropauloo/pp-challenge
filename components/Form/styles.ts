@@ -62,7 +62,7 @@ export const SearchIconContainer = styled("div")`
 export const ArrowContainer = styled("div")`
   color: #587169;
   position: absolute;
-  top: 14px;
+  top: 13px;
   right: 16px;
 `;
 

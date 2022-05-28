@@ -42,7 +42,7 @@ const closeOpacityAnimation = keyframes`
 `;
 
 export const ContainerModal = styled("div")`
-  z-index: 1;
+  z-index: 11;
   position: fixed;
   top: 0;
   left: 0;

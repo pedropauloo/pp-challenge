@@ -33,8 +33,16 @@ export const GlobalStyles = css`
     margin-left: 8px;
   }
 
+  .ml-16 {
+    margin-left: 16px;
+  }
+
   .mt-8 {
     margin-top: 8px;
+  }
+
+  .mb-8 {
+    margin-bottom: 8px;
   }
 
   .mb-40 {
@@ -66,6 +74,6 @@ export const GlobalStyles = css`
   }
 
   .fw-bold {
-    font-weight: 600;
+    font-weight: 600 !important;
   }
 `;

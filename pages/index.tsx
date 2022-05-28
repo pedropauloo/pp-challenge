@@ -12,12 +12,19 @@ import Form from "@components/Form/Form";
 import Modal from "@components/Modal/Modal";
 import Collapse from "@components/Collapse/Collapse";
 import Menu from "@components/Menu/Menu";
-import { CollapseHeader } from "@components/Agent/CollapseHeader";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 import { agentsApi } from "services/agents";
-import { Status } from "@components/Layout/styles";
+import {
+  AvatarCircle,
+  AvatarName,
+  ImageContainer,
+  Status,
+} from "@components/Layout/styles";
+import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Home: NextPage = () => {
   const [agents, setAgents] = useState<any[] | null>(null);
@@ -29,6 +36,19 @@ const Home: NextPage = () => {
       setAgents(response.data.items);
     });
   }, []);
+
+  const options = [
+    {
+      label: "Ver colaborador",
+      icon: <VisibilityOutlinedIcon />,
+      url: "/perfil",
+    },
+    {
+      label: "Editar",
+      icon: <EditOutlinedIcon />,
+      url: "/configuracoes",
+    },
+  ];
 
   return (
     <Page>
@@ -72,56 +92,62 @@ const Home: NextPage = () => {
             {agents?.map((item, itemIndex) => {
               return (
                 <Collapse
+                  disabled={item.status === "active" ? false : true}
                   title="Nome completo"
                   key={itemIndex}
                   header={
-                    <CollapseHeader
-                      avatarName={item.name}
-                      avatarImage={item.image}
-                      altImage="Imagem perfil colaborador"
-                    />
+                    <>
+                      <Collapse.Label className="mb-8">
+                        Nome completo
+                      </Collapse.Label>
+                      <ImageContainer>
+                        <AvatarCircle
+                          src={item.image}
+                          alt="Imagem perfil colaborador"
+                          width={32}
+                          height={32}
+                        />
+                        <Collapse.Item className="fw-bold ml-8">
+                          {item.name}
+                        </Collapse.Item>
+                      </ImageContainer>
+                    </>
                   }
                   open={false}
                 >
-                  <Collapse.Section>
-                    <div>
-                      <Collapse.Label>Departamento</Collapse.Label>
-                      <Collapse.Item>{item.department}</Collapse.Item>
-                    </div>
+                  <Collapse.Body>
+                    <Collapse.Section>
+                      <div>
+                        <Collapse.Label>Departamento</Collapse.Label>
+                        <Collapse.Item>{item.department}</Collapse.Item>
+                      </div>
 
-                    <div>
-                      <Collapse.Label>Cargo</Collapse.Label>
-                      <Collapse.Item>{item.role}</Collapse.Item>
-                    </div>
-                  </Collapse.Section>
-                  <Collapse.Section>
-                    <div>
-                      <Collapse.Label>Unidade</Collapse.Label>
-                      <Collapse.Item>123456789</Collapse.Item>
-                    </div>
-                    <div>
-                      <Collapse.Label>Unidade</Collapse.Label>
-                      <Collapse.Item>{item.branch}</Collapse.Item>
-                    </div>
-                  </Collapse.Section>
-                  <Collapse.Section>
-                    <div>
-                      <Collapse.Label>Status</Collapse.Label>
-                      <Status status={item.status}>
-                        {item.status === "active" ? "Ativo" : "Inativo"}
-                      </Status>
-                    </div>
-                  </Collapse.Section>
+                      <div>
+                        <Collapse.Label>Cargo</Collapse.Label>
+                        <Collapse.Item>{item.role}</Collapse.Item>
+                      </div>
+                    </Collapse.Section>
+                    <Collapse.Section>
+                      <div>
+                        <Collapse.Label>Unidade</Collapse.Label>
+                        <Collapse.Item>123456789</Collapse.Item>
+                      </div>
+                      <div>
+                        <Collapse.Label>Unidade</Collapse.Label>
+                        <Collapse.Item>{item.branch}</Collapse.Item>
+                      </div>
+                    </Collapse.Section>
+                    <Collapse.Section>
+                      <div>
+                        <Collapse.Label>Status</Collapse.Label>
+                        <Status status={item.status}>
+                          {item.status === "active" ? "Ativo" : "Inativo"}
+                        </Status>
+                      </div>
+                    </Collapse.Section>
+                  </Collapse.Body>
                   <Collapse.Footer>
-                    <Button className="center fw-bold">
-                      <Image
-                        src="/images/file-plus.svg"
-                        alt="Icone Ações"
-                        width={24}
-                        height={24}
-                      />
-                      Ações
-                    </Button>
+                    <DropdownMenu label={"Ações"} options={options} />
                   </Collapse.Footer>
                 </Collapse>
               );

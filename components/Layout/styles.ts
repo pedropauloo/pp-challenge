@@ -13,7 +13,6 @@ export const Content = styled("div")`
 
 export const Label = styled("span")`
   display: block;
-  color: #587169;
   font-weight: 600;
   font-size: 12px;
 `;
@@ -110,4 +109,50 @@ export const OrganizationalData = styled("div")`
 export const PageHeader = styled("div")`
   display: flex;
   margin: 40px auto 24px 16px;
+`;
+
+export const DropdownContainer = styled("nav")`
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+`;
+
+export const DropdownContent = styled("nav")`
+  box-shadow: 0px 8px 24px 0px #a5abb366;
+  position: absolute;
+  background: #ffffff;
+  border-radius: 8px;
+  transform-origin: top right;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  z-index: 10;
+`;
+
+export const MenuContainer = styled("ol")`
+  list-style: none;
+  padding: 8px 0;
+`;
+
+export const MenuButton = styled("button")`
+  display: flex;
+  background: transparent;
+  align-items: center;
+  justify-content: start;
+  width: fit;
+  border: none;
+  font-size: 16px;
+  text-align: left;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const MenuItem = styled("li")`
+  padding: 17px 24px;
+
+  &:hover {
+    cursor: pointer;
+    background: #f8faf9;
+  }
 `;

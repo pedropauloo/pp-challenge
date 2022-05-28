@@ -53,7 +53,7 @@ const Agent: NextPage = () => {
                 label="Departamento"
                 value="Comercial"
               />
-              <Form.Input type="text" label="Cargo" />
+              <Form.Input type="text" label="Cargo" value={role?.name} />
             </Form>
           </Card.Header>
           <Card.Body>
