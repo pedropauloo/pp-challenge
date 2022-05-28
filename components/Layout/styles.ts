@@ -133,7 +133,7 @@ export const MenuContainer = styled("ol")`
   padding: 8px 0;
 `;
 
-export const MenuButton = styled("button")`
+export const MenuButton = styled("a")`
   display: flex;
   background: transparent;
   align-items: center;
@@ -142,17 +142,21 @@ export const MenuButton = styled("button")`
   border: none;
   font-size: 16px;
   text-align: left;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 export const MenuItem = styled("li")`
   padding: 17px 24px;
 
-  &:hover {
+  &:hover:not(.disabled) {
     cursor: pointer;
     background: #f8faf9;
+  }
+
+  &.disabled:hover {
+    cursor: default;
+  }
+
+  &.disabled ${MenuButton} {
+    opacity: 0.5;
   }
 `;

@@ -13,6 +13,7 @@ interface OptionsDropdown {
   label: string | JSX.Element;
   icon: JSX.Element | string;
   url: string;
+  disabled?: boolean;
 }
 interface DropdownProps {
   label: string | JSX.Element;
@@ -40,8 +41,8 @@ const DropdownMenu = ({ label, options }: DropdownProps) => {
         <DropdownContent>
           <MenuContainer>
             {options.map((item, index) => (
-              <MenuItem key={index}>
-                <MenuButton type="button">
+              <MenuItem className={item.disabled ? "disabled" : ""} key={index}>
+                <MenuButton>
                   {item.icon}
                   <span className="ml-16">{item.label}</span>
                 </MenuButton>

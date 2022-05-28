@@ -15,7 +15,7 @@ import Menu from "@components/Menu/Menu";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import { agentsApi } from "services/agents";
 import {
@@ -36,19 +36,6 @@ const Home: NextPage = () => {
       setAgents(response.data.items);
     });
   }, []);
-
-  const options = [
-    {
-      label: "Ver colaborador",
-      icon: <VisibilityOutlinedIcon />,
-      url: "/perfil",
-    },
-    {
-      label: "Editar",
-      icon: <EditOutlinedIcon />,
-      url: "/configuracoes",
-    },
-  ];
 
   return (
     <Page>
@@ -90,6 +77,21 @@ const Home: NextPage = () => {
           <Card.Body>
             <Subtitle>Listagem de colaboradores</Subtitle>
             {agents?.map((item, itemIndex) => {
+              const dropdownOptions = [
+                {
+                  label: "Ver colaborador",
+                  icon: <VisibilityOutlinedIcon />,
+                  url: `/colaborador/" + ${item.id}`,
+                  disabled: false,
+                },
+                {
+                  label: "Excluir",
+                  icon: <DeleteOutlineOutlinedIcon />,
+                  url: `/colaborador/exluir/" + ${item.id}`,
+                  disabled: true,
+                },
+              ];
+
               return (
                 <Collapse
                   disabled={item.status === "active" ? false : true}
@@ -147,7 +149,7 @@ const Home: NextPage = () => {
                     </Collapse.Section>
                   </Collapse.Body>
                   <Collapse.Footer>
-                    <DropdownMenu label={"Ações"} options={options} />
+                    <DropdownMenu label={"Ações"} options={dropdownOptions} />
                   </Collapse.Footer>
                 </Collapse>
               );
