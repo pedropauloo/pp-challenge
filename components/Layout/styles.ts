@@ -11,24 +11,6 @@ export const Content = styled("div")`
   margin: 0 auto;
 `;
 
-export const AvatarCircle = styled(Image)`
-  position: relative;
-  border-radius: 60%;
-  width: 32px;
-  height: 32px;
-`;
-
-export const ContainerHeader = styled("div")`
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-`;
-
-export const ContainerContent = styled("div")`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 export const Label = styled("span")`
   display: block;
   color: #587169;
@@ -36,31 +18,48 @@ export const Label = styled("span")`
   font-size: 12px;
 `;
 
+export const Status = styled("span")<{
+  status: string;
+}>`
+  background: ${({ status }) => (status === "active" ? "#b5f1dd" : "#EAEFED")};
+  border-radius: 80px;
+  font-size: 14px;
+  padding: 4px 18px;
+  font-weight: 500;
+  color: #34423d;
+`;
+
+export const AvatarCircle = styled(Image)`
+  position: relative;
+  border-radius: 60%;
+  width: 32px;
+  height: 32px;
+`;
+
+export const ImageContainer = styled("div")`
+  display: flex;
+  align-items: center;
+`;
+
 export const AvatarName = styled(Label)`
   margin-left: 8px;
 `;
+
 export const RoleName = styled(Label)``;
 
-export const PageContent = styled("div")``;
-
-export const PageContentHeader = styled("div")`
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-`;
-
-export const PageSection = styled("div")``;
-
-export const ItemSection = styled("div")`
+export const Section = styled("section")`
   margin: 8px 0;
   display: flex;
   border: 2px solid #cad6d1;
-  background: #f5faf8;
   padding: 16px;
   border-radius: 8px;
 `;
 
-export const CircleImage = styled("div")<{
+export const InfoBox = styled("div")`
+  display: flex;
+`;
+
+export const ContainerCircle = styled("div")<{
   width: string;
   height: string;
   padding: string;
@@ -73,16 +72,10 @@ export const CircleImage = styled("div")<{
   border-radius: 50%;
 `;
 
-export const ItemSectionContent = styled("div")`
-  margin-left: 8px;
+export const SectionContent = styled("div")`
+  width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-export const LabelPersonalInfo = styled("span")`
-  font-size: 12px;
-  font-weight: 400;
-  color: #587169;
 `;
 
 export const PersonalInfo = styled("span")`

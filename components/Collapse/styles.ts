@@ -63,11 +63,3 @@ export const SectionItem = styled(SectionLabel)`
   font-weight: 400;
 `;
 
-export const SectionBadge = styled("span")`
-  background: #b5f1dd;
-  border-radius: 80px;
-  font-size: 14px;
-  padding: 4px 18px;
-  font-weight: 500;
-  color: #34423d;
-`;

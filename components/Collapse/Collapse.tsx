@@ -55,11 +55,6 @@ const Footer = ({ children }: any) => {
 };
 Collapse.Footer = Footer;
 
-const Badge = ({ children }: any) => {
-  return <SectionBadge>{children}</SectionBadge>;
-};
-Collapse.Badge = Badge;
-
 const Label = ({ children }: any) => {
   return <SectionLabel>{children}</SectionLabel>;
 };

@@ -1,18 +1,18 @@
 import {
   AvatarCircle,
-  ContainerHeader,
+  ImageContainer,
   Label,
   AvatarName,
 } from "@components/Layout/styles";
 
-export const Header = ({ avatarImage, avatarName, altImage }: any) => {
+export const CollapseHeader = ({ avatarImage, avatarName, altImage }: any) => {
   return (
     <>
       <Label>Nome completo</Label>
-      <ContainerHeader>
+      <ImageContainer className="mt-8">
         <AvatarCircle src={avatarImage} alt={altImage} width={32} height={32} />
         <AvatarName>{avatarName}</AvatarName>
-      </ContainerHeader>
+      </ImageContainer>
     </>
   );
 };

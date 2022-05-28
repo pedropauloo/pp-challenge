@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Subtitle, Title } from "@components/Text/styles";
-import { Button } from "@components/Button/styles";
+import { Button, LoadMoreIcon } from "@components/Button/styles";
 
 import Card from "@components/Card/Card";
 import Page from "@components/Layout/Page";
@@ -12,11 +12,12 @@ import Form from "@components/Form/Form";
 import Modal from "@components/Modal/Modal";
 import Collapse from "@components/Collapse/Collapse";
 import Menu from "@components/Menu/Menu";
-import { Header as AgentHeader } from "@components/Agent/Header";
+import { CollapseHeader } from "@components/User/CollapseHeader";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { agentsApi } from "services/agents";
+import { Status } from "@components/Layout/styles";
 
 const Home: NextPage = () => {
   const [agents, setAgents] = useState<any[] | null>(null);
@@ -40,12 +41,12 @@ const Home: NextPage = () => {
             <Form>
               <Button
                 type="button"
-                fontWeight="400"
-                contentPosition="space-between"
+                className="space-between fw-medium mb-40"
                 onClick={() => setModalOpen(true)}
               >
-                Cargos <MoreVertIcon />
+                Colaboradores <MoreVertIcon />
               </Button>
+
               {modalOpen && (
                 <Modal
                   isOpen={modalOpen}
@@ -58,6 +59,7 @@ const Home: NextPage = () => {
                   </Menu>
                 </Modal>
               )}
+
               <Form.Search
                 type="text"
                 label="Pesquisar por"
@@ -67,14 +69,13 @@ const Home: NextPage = () => {
           </Card.Header>
           <Card.Body>
             <Subtitle>Listagem de colaboradores</Subtitle>
-
             {agents?.map((item, itemIndex) => {
               return (
                 <Collapse
                   title="Nome completo"
                   key={itemIndex}
                   header={
-                    <AgentHeader
+                    <CollapseHeader
                       avatarName={item.name}
                       avatarImage={item.image}
                       altImage="Imagem perfil colaborador"
@@ -85,7 +86,7 @@ const Home: NextPage = () => {
                   <Collapse.Section>
                     <div>
                       <Collapse.Label>Departamento</Collapse.Label>
-                      <Collapse.Item>{item.departament}</Collapse.Item>
+                      <Collapse.Item>{item.department}</Collapse.Item>
                     </div>
 
                     <div>
@@ -96,7 +97,7 @@ const Home: NextPage = () => {
                   <Collapse.Section>
                     <div>
                       <Collapse.Label>Unidade</Collapse.Label>
-                      <Collapse.Item>{item.branch2}</Collapse.Item>
+                      <Collapse.Item>123456789</Collapse.Item>
                     </div>
                     <div>
                       <Collapse.Label>Unidade</Collapse.Label>
@@ -106,15 +107,13 @@ const Home: NextPage = () => {
                   <Collapse.Section>
                     <div>
                       <Collapse.Label>Status</Collapse.Label>
-                      <Collapse.Badge>
-                        {item.status?.replace(/^\w/, (c: string) =>
-                          c.toUpperCase()
-                        )}
-                      </Collapse.Badge>
+                      <Status status={item.status}>
+                        {item.status === "active" ? "Ativo" : "Inativo"}
+                      </Status>
                     </div>
                   </Collapse.Section>
                   <Collapse.Footer>
-                    <Button contentPosition="center" fontWeight="600">
+                    <Button className="center fw-bold">
                       <Image
                         src="/images/file-plus.svg"
                         alt="Icone Ações"
@@ -127,6 +126,10 @@ const Home: NextPage = () => {
                 </Collapse>
               );
             })}
+            <Button className="center fw-bold">
+              <LoadMoreIcon />
+              Carregar Mais
+            </Button>
           </Card.Body>
         </Card>
       </Page.Body>

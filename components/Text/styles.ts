@@ -18,7 +18,7 @@ export const Title = styled("h1")`
 `;
 
 export const Subtitle = styled("h2")`
-  margin: 20px 0;
+  margin-bottom: 20px;
   font-size: 18px;
   font-weight: 600;
   color: #34423d;

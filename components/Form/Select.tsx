@@ -7,11 +7,11 @@ import {
 
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const Select = ({ label, content }: any) => {
+const Select = ({ label, ...props }: any) => {
   return (
     <ContainerInput>
       <Label>{label}</Label>
-      <SelectForm>{content}</SelectForm>
+      <SelectForm {...props} />
       <ArrowContainer>
         <ArrowBackIosIcon style={{ transform: "rotate(-90deg)" }} />
       </ArrowContainer>

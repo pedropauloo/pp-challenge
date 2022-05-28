@@ -25,21 +25,8 @@ export const Search = styled(Input)`
   padding: 16px 16px 16px 40px;
 `;
 
-export const Select = styled("span")`
+export const Select = styled(Input)`
   display: block;
-  border: 2px solid #cad6d1;
-  color: #587169;
-  border-radius: 8px;
-  background: #f5faf8;
-  padding: 16px;
-  width: 100%;
-  font-weight: 500;
-
-  &:focus,
-  &:focus-visible {
-    outline: none;
-    border-color: #b5f1dd;
-  }
 `;
 
 export const Label = styled("label")`
@@ -54,8 +41,8 @@ export const Label = styled("label")`
 `;
 
 export const ContainerInput = styled("div")`
+  width: 100%;
   position: relative;
-  margin: 16px 0;
   min-width: 250px;
 `;
 

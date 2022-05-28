@@ -8,9 +8,9 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 const Search = (props: any) => {
-  const { label, ...input } = props;
+  const { label, className, ...input } = props;
   return (
-    <ContainerInput>
+    <ContainerInput className={className}>
       <Label>{label}</Label>
       <SearchForm {...input} />
       <SearchIconContainer>
