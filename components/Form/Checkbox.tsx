@@ -1,15 +1,11 @@
 import { useState } from "react";
-import {
-  Checkbox as CheckboxForm,
-  CheckboxIcon,
-  Checkmark,
-} from "./styles";
+import { Checkbox as CheckboxForm, CheckboxContainer, CheckboxIcon, Checkmark } from "./styles";
 
 const Checkbox = ({ checked }: any) => {
   const [isChecked, setIsChecked] = useState(checked);
 
   return (
-    <label>
+    <CheckboxContainer>
       <CheckboxForm
         type="checkbox"
         onChange={() => {
@@ -19,7 +15,7 @@ const Checkbox = ({ checked }: any) => {
       <Checkmark checked={isChecked}>
         <CheckboxIcon />
       </Checkmark>
-    </label>
+    </CheckboxContainer>
   );
 };
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 
 import { BackButton } from "@components/Button/styles";
-import { Title } from "@components/Text/styles";
+import { Subtitle, Title } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -46,13 +46,18 @@ const Agent: NextPage = () => {
       <Page.Body>
         <Card>
           <Card.Header>
-            <Title>Dados do cargo</Title>
+            <Subtitle>Dados do cargo</Subtitle>
             <Form>
-              <Form.Select label="Departamento" value="Comercial" />
+              <Form.Select
+                className="mb-24"
+                label="Departamento"
+                value="Comercial"
+              />
               <Form.Input type="text" label="Cargo" />
             </Form>
           </Card.Header>
           <Card.Body>
+            <Subtitle>Listagem de permissões</Subtitle>
             <ResponsiveTableContent>
               <Table>
                 <TableHead>
@@ -68,17 +73,17 @@ const Agent: NextPage = () => {
                     return (
                       <TableRow key={rowIndex}>
                         <TableData>{row.role}</TableData>
-                        <TableData>
+                        <TableData className="text-center">
                           <Form.Checkbox
                             checked={row.permissions.includes("read")}
                           />
                         </TableData>
-                        <TableData>
+                        <TableData className="text-center">
                           <Form.Checkbox
                             checked={row.permissions.includes("write")}
                           />
                         </TableData>
-                        <TableData>
+                        <TableData className="text-center">
                           <Form.Checkbox
                             checked={row.permissions.includes("delete")}
                           />

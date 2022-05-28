@@ -45,6 +45,10 @@ export const GlobalStyles = css`
     margin-bottom: 24px;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
   .space-between {
     justify-content: space-between;
   }

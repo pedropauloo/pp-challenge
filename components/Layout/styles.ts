@@ -7,7 +7,7 @@ export const Background = styled("main")`
 `;
 
 export const Content = styled("div")`
-  padding: 0 5px;
+  padding: 0 6px;
   margin: 0 auto;
 `;
 

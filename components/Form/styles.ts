@@ -66,6 +66,10 @@ export const ArrowContainer = styled("div")`
   right: 16px;
 `;
 
+export const CheckboxContainer = styled("label")`
+  display: inline-block;
+`;
+
 export const Checkbox = styled("input")`
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
