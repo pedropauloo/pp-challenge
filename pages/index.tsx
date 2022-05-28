@@ -12,7 +12,7 @@ import Form from "@components/Form/Form";
 import Modal from "@components/Modal/Modal";
 import Collapse from "@components/Collapse/Collapse";
 import Menu from "@components/Menu/Menu";
-import { CollapseHeader } from "@components/User/CollapseHeader";
+import { CollapseHeader } from "@components/Agent/CollapseHeader";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 

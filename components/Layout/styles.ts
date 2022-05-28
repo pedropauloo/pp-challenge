@@ -18,6 +18,12 @@ export const Label = styled("span")`
   font-size: 12px;
 `;
 
+export const Info = styled("span")`
+  font-size: 14px;
+  font-weight: 600;
+  color: #587169;
+`;
+
 export const Status = styled("span")<{
   status: string;
 }>`
@@ -57,6 +63,17 @@ export const Section = styled("section")`
 
 export const InfoBox = styled("div")`
   display: flex;
+  border: 2px solid #cad6d1;
+  align-items: center;
+  border-radius: 8px;
+  padding: 16px;
+`;
+
+export const InfoBoxContent = styled("div")`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
 `;
 
 export const ContainerCircle = styled("div")<{
@@ -76,12 +93,6 @@ export const SectionContent = styled("div")`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-export const PersonalInfo = styled("span")`
-  font-size: 14px;
-  font-weight: 600;
-  color: #587169;
 `;
 
 export const InfoAgente = styled("div")`

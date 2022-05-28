@@ -21,6 +21,14 @@ export const GlobalStyles = css`
     background-color: #eaefed;
   }
 
+  .p-10 {
+    padding: 10px;
+  }
+
+  .p-24 {
+    padding: 24px !important;
+  }
+
   .ml-8 {
     margin-left: 8px;
   }
@@ -31,6 +39,10 @@ export const GlobalStyles = css`
 
   .mb-40 {
     margin-bottom: 40px;
+  }
+
+  .mb-24 {
+    margin-bottom: 24px;
   }
 
   .space-between {
