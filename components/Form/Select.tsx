@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from "react";
 import {
   Select as SelectForm,
   Label,
@@ -7,7 +8,11 @@ import {
 
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const Select = ({ label, ...props }: any) => {
+interface SelectProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+const Select = ({ label, ...props }: SelectProps) => {
   return (
     <ContainerInput>
       <Label>{label}</Label>

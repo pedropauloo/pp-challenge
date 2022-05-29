@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from "react";
 import {
   Search as SearchForm,
   Label,
@@ -7,7 +8,11 @@ import {
 
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = (props: any) => {
+interface SearchProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+const Search = (props: SearchProps) => {
   const { label, className, ...input } = props;
   return (
     <ContainerInput className={className}>

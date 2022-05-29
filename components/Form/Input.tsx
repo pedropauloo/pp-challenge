@@ -1,6 +1,11 @@
+import { InputHTMLAttributes } from "react";
 import { Input as InputForm, Label, ContainerInput } from "./styles";
 
-const Input = (props: any) => {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+const Input = (props: InputProps) => {
   const { label, ...input } = props;
   return (
     <ContainerInput>

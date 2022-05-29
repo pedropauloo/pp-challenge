@@ -5,13 +5,21 @@ import { Subtitle } from "@components/Text/styles";
 
 import CloseIcon from "@mui/icons-material/Close";
 
+interface ModalProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  title: string;
+  children: any;
+  closeButton?: boolean;
+}
+
 const Modal = ({
   isOpen,
   setIsOpen,
   title,
   children,
   closeButton = true,
-}: any) => {
+}: ModalProps) => {
   const [openContent, setOpenContent] = useState(true);
 
   useEffect(() => {

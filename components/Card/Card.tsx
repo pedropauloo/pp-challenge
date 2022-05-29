@@ -1,22 +1,27 @@
 import { Card as CardComponent, CardBody, CardHeader } from "./styles";
 
-const Card = ({ children }: any) => {
+interface CardProps {
+  className?: string;
+  children: any;
+}
+
+const Card = ({ children }: CardProps) => {
   return <CardComponent>{children}</CardComponent>;
 };
 
-const Header = ({ children }: any) => {
+const Header = ({ children }: CardProps) => {
   return <CardHeader>{children}</CardHeader>;
 };
 
 Card.Header = Header;
 
-const Body = ({ children }: any) => {
+const Body = ({ children }: CardProps) => {
   return <CardBody>{children}</CardBody>;
 };
 
 Card.Body = Body;
 
-const Footer = ({ children }: any) => {
+const Footer = ({ children }: CardProps) => {
   return <div>{children}</div>;
 };
 

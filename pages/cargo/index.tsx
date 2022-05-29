@@ -59,8 +59,10 @@ const Cargo: NextPage = () => {
                   title="Categorias"
                 >
                   <Menu>
-                    <Menu.Item>Colaboradores</Menu.Item>
-                    <Menu.Item>Cargo</Menu.Item>
+                    <Menu.Item asElement="a" url="/">
+                      Colaboradores
+                    </Menu.Item>
+                    <Menu.Item asElement="a">Cargo</Menu.Item>
                   </Menu>
                 </Modal>
               )}
@@ -150,7 +152,7 @@ const Cargo: NextPage = () => {
                               key={optionIndex}
                               url={option.url}
                               disabled={option.disabled}
-                              as="a"
+                              asElement="a"
                             >
                               {option.icon}
                               {option.label}

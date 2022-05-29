@@ -59,10 +59,10 @@ export const SectionItem = styled("span")`
 `;
 
 export const CollapseContainer = styled("div")<{
-  open: boolean;
+  isOpen: boolean;
   disabled?: boolean;
 }>`
-  border: 2px solid ${({ open }) => (!open ? "#eaefed" : "#B5F1DD")};
+  border: 2px solid ${({ isOpen }) => (!isOpen ? "#eaefed" : "#B5F1DD")};
   border-radius: 8px;
   margin: 8px 0;
   padding: 24px 16px;

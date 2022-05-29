@@ -30,7 +30,8 @@ import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Home: NextPage = () => {
   const [agents, setAgents] = useState<any[] | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalPage, setModalPage] = useState(false);
+  const [modalMenu, setModalMenu] = useState(false);
 
   useEffect(() => {
     agentsApi.getAgents().then((response) => {
@@ -51,20 +52,22 @@ const Home: NextPage = () => {
               <Button
                 type="button"
                 className="space-between fw-medium mb-40"
-                onClick={() => setModalOpen(true)}
+                onClick={() => setModalPage(true)}
               >
                 Colaboradores <MoreVertIcon />
               </Button>
 
-              {modalOpen && (
+              {modalPage && (
                 <Modal
-                  isOpen={modalOpen}
-                  setIsOpen={setModalOpen}
+                  isOpen={modalPage}
+                  setIsOpen={setModalPage}
                   title="Categorias"
                 >
                   <Menu>
-                    <Menu.Item>Colaboradores</Menu.Item>
-                    <Menu.Item>Cargo</Menu.Item>
+                    <Menu.Item asElement="a">Colaboradores</Menu.Item>
+                    <Menu.Item asElement="a" url="cargo">
+                      Cargo
+                    </Menu.Item>
                   </Menu>
                 </Modal>
               )}
@@ -82,13 +85,13 @@ const Home: NextPage = () => {
               const dropdownOptions = [
                 {
                   label: "Ver colaborador",
-                  icon: <VisibilityOutlinedIcon />,
+                  icon: <VisibilityOutlinedIcon className="mr-8" />,
                   url: `colaborador/${item.agent_id}`,
                   disabled: false,
                 },
                 {
                   label: "Excluir",
-                  icon: <DeleteOutlineOutlinedIcon />,
+                  icon: <DeleteOutlineOutlinedIcon className="mr-8" />,
                   url: `colaborador/excluir/${item.agent_id}`,
                   disabled: true,
                 },
@@ -151,7 +154,41 @@ const Home: NextPage = () => {
                     </Collapse.Section>
                   </Collapse.Body>
                   <Collapse.Footer>
-                    <DropdownMenu label={"Ações"} options={dropdownOptions} />
+                    <Button
+                      type="button"
+                      className="center fw-bold pr-10"
+                      onClick={() => setModalMenu(true)}
+                    >
+                      <Image
+                        src="/images/file-plus.svg"
+                        alt="Icone Ações"
+                        width={24}
+                        height={24}
+                      />{" "}
+                      Ações
+                    </Button>
+                    {modalMenu && (
+                      <Modal
+                        isOpen={modalMenu}
+                        setIsOpen={setModalMenu}
+                        title=""
+                        closeButton={false}
+                      >
+                        <Menu>
+                          {dropdownOptions.map((option, optionIndex) => (
+                            <Menu.Item
+                              key={optionIndex}
+                              url={option.url}
+                              disabled={option.disabled}
+                              asElement="a"
+                            >
+                              {option.icon}
+                              {option.label}
+                            </Menu.Item>
+                          ))}
+                        </Menu>
+                      </Modal>
+                    )}
                   </Collapse.Footer>
                 </Collapse>
               );

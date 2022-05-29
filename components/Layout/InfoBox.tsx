@@ -5,29 +5,35 @@ import {
   Info as StyledInfo,
   InfoBoxContent,
 } from "./styles";
-const InfoBox = ({ children, className }: any) => {
+
+interface InfoBoxProps {
+  children: any;
+  className?: string;
+}
+
+const InfoBox = ({ children, className }: InfoBoxProps) => {
   return <InfoBoxContainer className={className}>{children}</InfoBoxContainer>;
 };
 
-const Image = ({ children, className }: any) => {
+const Image = ({ children, className }: InfoBoxProps) => {
   return <ImageContainer className={className}>{children}</ImageContainer>;
 };
 
 InfoBox.Image = Image;
 
-const Content = ({ children, className }: any) => {
+const Content = ({ children, className }: InfoBoxProps) => {
   return <InfoBoxContent className={className}>{children}</InfoBoxContent>;
 };
 
 InfoBox.Content = Content;
 
-const Label = ({ children }: any) => {
+const Label = ({ children }: InfoBoxProps) => {
   return <StyledLabel>{children}</StyledLabel>;
 };
 
 InfoBox.Label = Label;
 
-const Info = ({ children }: any) => {
+const Info = ({ children }: InfoBoxProps) => {
   return <StyledInfo>{children}</StyledInfo>;
 };
 

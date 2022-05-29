@@ -4,7 +4,11 @@ import Search from "./Search";
 import Select from "./Select";
 import { FormComponent } from "./styles";
 
-const Form = ({ children }: any) => {
+interface FormProps {
+  children: any;
+}
+
+const Form = ({ children }: FormProps) => {
   return <FormComponent>{children}</FormComponent>;
 };
 
