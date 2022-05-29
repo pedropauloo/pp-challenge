@@ -25,7 +25,7 @@ const DropdownMenu = ({ label, options }: DropdownProps) => {
   return (
     <DropdownContainer>
       <Button
-        className="center fw-bold"
+        className="center fw-bold pr-10"
         onClick={() => setShowOptions(!showOptions)}
       >
         <Image

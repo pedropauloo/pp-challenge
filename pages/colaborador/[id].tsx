@@ -12,7 +12,7 @@ import InfoBox from "@components/Layout/InfoBox";
 import AgentHeader from "@components/Agent/AgentHeader";
 import Form from "@components/Form/Form";
 
-const UserPage: NextPage = () => {
+const Agent: NextPage = () => {
   return (
     <Page>
       <Page.Header>
@@ -121,4 +121,4 @@ const UserPage: NextPage = () => {
   );
 };
 
-export default UserPage;
+export default Agent;

@@ -21,6 +21,10 @@ export const GlobalStyles = css`
     background-color: #eaefed;
   }
 
+  .pr-10 {
+    padding-right: 10px;
+  }
+
   .p-10 {
     padding: 10px;
   }
