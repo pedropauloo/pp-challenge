@@ -3,20 +3,24 @@ import {
   MenuContainer,
   MenuItem,
   MenuButton,
-} from "./styles";
+} from "@components/Layout/styles";
+import { useRouter } from "next/router";
 
 const Menu = ({ children }: any) => {
   return (
     <MenuComponent>
-      <MenuContainer>{children}</MenuContainer>
+      <MenuContainer className="p-0">{children}</MenuContainer>
     </MenuComponent>
   );
 };
 
-const Item = ({ children }: any) => {
+const Item = ({ children, as, disabled, url }: any) => {
+  const router = useRouter();
   return (
-    <MenuItem>
-      <MenuButton>{children}</MenuButton>
+    <MenuItem className={disabled ? "disabled" : ""}>
+      <MenuButton as={as} onClick={() => router.push(url)}>
+        {children}
+      </MenuButton>
     </MenuItem>
   );
 };

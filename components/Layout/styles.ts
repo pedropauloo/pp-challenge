@@ -128,6 +128,8 @@ export const DropdownContent = styled("nav")`
   z-index: 10;
 `;
 
+export const Menu = styled("nav")``;
+
 export const MenuContainer = styled("ol")`
   list-style: none;
   padding: 8px 0;
@@ -145,7 +147,7 @@ export const MenuButton = styled("button")`
 `;
 
 export const MenuItem = styled("li")`
-min-width: 200px;
+  min-width: 200px;
   padding: 17px 24px;
 
   &:hover:not(.disabled) {

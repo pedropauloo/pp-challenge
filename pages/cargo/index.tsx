@@ -24,7 +24,9 @@ import Form from "@components/Form/Form";
 import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Cargo: NextPage = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalPage, setModalPage] = useState(false);
+  const [modalMenu, setModalMenu] = useState(false);
+
   const [agents, setAgents] = useState<any[] | null>(null);
 
   useEffect(() => {
@@ -46,14 +48,14 @@ const Cargo: NextPage = () => {
               <Button
                 type="button"
                 className="space-between fw-medium mb-40"
-                onClick={() => setModalOpen(true)}
+                onClick={() => setModalPage(true)}
               >
                 Cargos <MoreVertIcon />
               </Button>
-              {modalOpen && (
+              {modalPage && (
                 <Modal
-                  isOpen={modalOpen}
-                  setIsOpen={setModalOpen}
+                  isOpen={modalPage}
+                  setIsOpen={setModalPage}
                   title="Categorias"
                 >
                   <Menu>
@@ -76,25 +78,25 @@ const Cargo: NextPage = () => {
               const dropdownOptions = [
                 {
                   label: "Ver cargo",
-                  icon: <VisibilityOutlinedIcon />,
+                  icon: <VisibilityOutlinedIcon className="mr-8" />,
                   url: `cargo/${++itemIndex}`,
                   disabled: false,
                 },
                 {
                   label: "Editar",
-                  icon: <EditOutlinedIcon />,
+                  icon: <EditOutlinedIcon className="mr-8" />,
                   url: `cargo/editar/${++itemIndex}`,
                   disabled: true,
                 },
                 {
                   label: "Duplica",
-                  icon: <ContentCopyOutlinedIcon />,
+                  icon: <ContentCopyOutlinedIcon className="mr-8" />,
                   url: `cargo/duplicar/${++itemIndex}`,
                   disabled: true,
                 },
                 {
                   label: "Excluir",
-                  icon: <RepeatOutlinedIcon />,
+                  icon: <RepeatOutlinedIcon className="mr-8" />,
                   url: `cargo/exluir/${++itemIndex}`,
                   disabled: true,
                 },
@@ -121,7 +123,42 @@ const Cargo: NextPage = () => {
                     </Collapse.Section>
                   </Collapse.Body>
                   <Collapse.Footer>
-                    <DropdownMenu label={"Ações"} options={dropdownOptions} />
+                    <Button
+                      type="button"
+                      className="center fw-bold pr-10"
+                      onClick={() => setModalMenu(true)}
+                    >
+                      <Image
+                        src="/images/file-plus.svg"
+                        alt="Icone Ações"
+                        width={24}
+                        height={24}
+                      />{" "}
+                      Ações
+                    </Button>
+
+                    {modalMenu && (
+                      <Modal
+                        isOpen={modalMenu}
+                        setIsOpen={setModalMenu}
+                        title=""
+                        closeButton={false}
+                      >
+                        <Menu>
+                          {dropdownOptions.map((option, optionIndex) => (
+                            <Menu.Item
+                              key={optionIndex}
+                              url={option.url}
+                              disabled={option.disabled}
+                              as="a"
+                            >
+                              {option.icon}
+                              {option.label}
+                            </Menu.Item>
+                          ))}
+                        </Menu>
+                      </Modal>
+                    )}
                   </Collapse.Footer>
                 </Collapse>
               );
