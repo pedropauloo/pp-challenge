@@ -18,12 +18,14 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import { agentsApi } from "services/agents";
+
 import {
   AvatarCircle,
   AvatarName,
   ImageContainer,
   Status,
 } from "@components/Layout/styles";
+
 import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Home: NextPage = () => {
@@ -81,13 +83,13 @@ const Home: NextPage = () => {
                 {
                   label: "Ver colaborador",
                   icon: <VisibilityOutlinedIcon />,
-                  url: `/colaborador/" + ${item.id}`,
+                  url: `colaborador/${item.agent_id}`,
                   disabled: false,
                 },
                 {
                   label: "Excluir",
                   icon: <DeleteOutlineOutlinedIcon />,
-                  url: `/colaborador/exluir/" + ${item.id}`,
+                  url: `colaborador/excluir/${item.agent_id}`,
                   disabled: true,
                 },
               ];

@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import { BackButton } from "@components/Button/styles";
 import { Subtitle, Text, ThinText, Title } from "@components/Text/styles";
@@ -12,7 +14,23 @@ import InfoBox from "@components/Layout/InfoBox";
 import AgentHeader from "@components/Agent/AgentHeader";
 import Form from "@components/Form/Form";
 
+import { agentsApi } from "services/agents";
+
 const Agent: NextPage = () => {
+  const route = useRouter();
+
+  const { id } = route.query;
+  const [agent, setAgent] = useState<any>();
+
+  useEffect(() => {
+    if (id) {
+      agentsApi.getAgentById(id).then((response) => {
+        console.log(response.data.agent);
+        setAgent(response.data.agent);
+      });
+    }
+  }, [id]);
+
   return (
     <Page>
       <Page.Header>
@@ -34,8 +52,8 @@ const Agent: NextPage = () => {
                 />
               </AgentHeader.Image>
               <div>
-                <AgentHeader.Name>Nome do colaborador</AgentHeader.Name>
-                <AgentHeader.Email>Email do colaborador</AgentHeader.Email>
+                <AgentHeader.Name>{agent?.name}</AgentHeader.Name>
+                <AgentHeader.Email>{agent?.email}</AgentHeader.Email>
               </div>
             </AgentHeader>
 
@@ -52,7 +70,9 @@ const Agent: NextPage = () => {
               </InfoBox.Image>
               <InfoBox.Content>
                 <InfoBox.Label className="fw-light">CPF</InfoBox.Label>
-                <InfoBox.Info className="fw-light">083.565.084-79</InfoBox.Info>
+                <InfoBox.Info className="fw-light">
+                  {agent?.document.number}
+                </InfoBox.Info>
               </InfoBox.Content>
             </InfoBox>
             <InfoBox className="bg-light-gray mt-8">
@@ -67,7 +87,7 @@ const Agent: NextPage = () => {
               <InfoBox.Content>
                 <InfoBox.Label className="fw-light">Telefone</InfoBox.Label>
                 <InfoBox.Info className="fw-light">
-                  +55 82 2512 6627
+                  +{agent?.phone.ddi} {agent?.phone.ddd} {agent?.phone.number}
                 </InfoBox.Info>
               </InfoBox.Content>
             </InfoBox>
@@ -82,7 +102,9 @@ const Agent: NextPage = () => {
               </InfoBox.Image>
               <InfoBox.Content>
                 <InfoBox.Label className="fw-light">Nascimento</InfoBox.Label>
-                <InfoBox.Info className="fw-light">29/11/1990</InfoBox.Info>
+                <InfoBox.Info className="fw-light">
+                  {new Date(agent?.birth_date).toLocaleDateString()}
+                </InfoBox.Info>
               </InfoBox.Content>
             </InfoBox>
             <InfoBox>
@@ -91,25 +113,25 @@ const Agent: NextPage = () => {
                 <Form.Select
                   className="mb-24"
                   label="Departamento"
-                  value="Department"
+                  value={agent?.department}
                   disabled
                 />
                 <Form.Select
                   className="mb-24"
                   label="Cargo"
-                  value="Cargo"
+                  value={agent?.role}
                   disabled
                 />
                 <Form.Select
                   className="mb-24"
                   label="Unidade"
-                  value="Unidade"
+                  value={agent?.branch}
                   disabled
                 />
                 <Form.Select
                   className="mb-24"
                   label="Status"
-                  value="Activo"
+                  value={agent?.status === "active" ? "Ativo" : "Inativo"}
                   disabled
                 />
               </InfoBox.Content>

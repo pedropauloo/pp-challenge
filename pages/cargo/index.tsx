@@ -11,11 +11,15 @@ import Collapse from "@components/Collapse/Collapse";
 import { HeaderCollapse } from "@components/Role/HeaderCollapse";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import { rolesApi } from "services/roles";
 import Page from "@components/Layout/Page";
 import Card from "@components/Card/Card";
 import Form from "@components/Form/Form";
+import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Cargo: NextPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,6 +71,21 @@ const Cargo: NextPage = () => {
             <Subtitle>Listagem de cargos</Subtitle>
 
             {agents?.map((item, itemIndex) => {
+              const dropdownOptions = [
+                {
+                  label: "Ver cargo",
+                  icon: <VisibilityOutlinedIcon />,
+                  url: `/colaborador/" + ${item.id}`,
+                  disabled: false,
+                },
+                {
+                  label: "Excluir",
+                  icon: <DeleteOutlineOutlinedIcon />,
+                  url: `/colaborador/exluir/" + ${item.id}`,
+                  disabled: true,
+                },
+              ];
+
               return (
                 <Collapse
                   title="Nome completo"
@@ -74,28 +93,21 @@ const Cargo: NextPage = () => {
                   header={<HeaderCollapse roleName={item.name} />}
                   open={false}
                 >
-                  <Collapse.Section>
-                    <div>
-                      <Collapse.Label>Departamento</Collapse.Label>
-                      <Collapse.Item>{item.departament}</Collapse.Item>
-                    </div>
+                  <Collapse.Body>
+                    <Collapse.Section>
+                      <div>
+                        <Collapse.Label>Departamento</Collapse.Label>
+                        <Collapse.Item>{item.departament}</Collapse.Item>
+                      </div>
 
-                    <div>
-                      <Collapse.Label>Colaboradores</Collapse.Label>
-                      <Collapse.Item>{item.agents_quantity}</Collapse.Item>
-                    </div>
-                  </Collapse.Section>
-
+                      <div>
+                        <Collapse.Label>Colaboradores</Collapse.Label>
+                        <Collapse.Item>{item.agents_quantity}</Collapse.Item>
+                      </div>
+                    </Collapse.Section>
+                  </Collapse.Body>
                   <Collapse.Footer>
-                    <Button className="center fw-bold">
-                      <Image
-                        src="/images/file-plus.svg"
-                        alt="Icone Ações"
-                        width={24}
-                        height={24}
-                      />
-                      Ações
-                    </Button>
+                    <DropdownMenu label={"Ações"} options={dropdownOptions} />
                   </Collapse.Footer>
                 </Collapse>
               );

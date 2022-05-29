@@ -1,5 +1,6 @@
-import { Button } from "@components/Button/styles";
 import Image from "next/image";
+
+import { Button } from "@components/Button/styles";
 import { useState } from "react";
 import {
   DropdownContainer,
@@ -8,6 +9,7 @@ import {
   MenuContainer,
   MenuItem,
 } from "./styles";
+import { useRouter } from "next/router";
 
 interface OptionsDropdown {
   label: string | JSX.Element;
@@ -21,6 +23,7 @@ interface DropdownProps {
 }
 
 const DropdownMenu = ({ label, options }: DropdownProps) => {
+  const router = useRouter();
   const [showOptions, setShowOptions] = useState(false);
   return (
     <DropdownContainer>
@@ -42,7 +45,7 @@ const DropdownMenu = ({ label, options }: DropdownProps) => {
           <MenuContainer>
             {options.map((item, index) => (
               <MenuItem className={item.disabled ? "disabled" : ""} key={index}>
-                <MenuButton>
+                <MenuButton onClick={() => router.push(item.url)}>
                   {item.icon}
                   <span className="ml-16">{item.label}</span>
                 </MenuButton>
