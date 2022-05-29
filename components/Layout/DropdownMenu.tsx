@@ -45,7 +45,7 @@ const DropdownMenu = ({ label, options }: DropdownProps) => {
           <MenuContainer>
             {options.map((item, index) => (
               <MenuItem className={item.disabled ? "disabled" : ""} key={index}>
-                <MenuButton onClick={() => router.push(item.url)}>
+                <MenuButton as="a" onClick={() => router.push(item.url)}>
                   {item.icon}
                   <span className="ml-16">{item.label}</span>
                 </MenuButton>

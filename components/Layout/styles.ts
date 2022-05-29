@@ -133,7 +133,7 @@ export const MenuContainer = styled("ol")`
   padding: 8px 0;
 `;
 
-export const MenuButton = styled("a")`
+export const MenuButton = styled("button")`
   display: flex;
   background: transparent;
   align-items: center;
@@ -145,6 +145,7 @@ export const MenuButton = styled("a")`
 `;
 
 export const MenuItem = styled("li")`
+min-width: 200px;
   padding: 17px 24px;
 
   &:hover:not(.disabled) {

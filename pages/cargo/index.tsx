@@ -11,9 +11,11 @@ import Collapse from "@components/Collapse/Collapse";
 import { HeaderCollapse } from "@components/Role/HeaderCollapse";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
 
 import { rolesApi } from "services/roles";
 import Page from "@components/Layout/Page";
@@ -75,13 +77,25 @@ const Cargo: NextPage = () => {
                 {
                   label: "Ver cargo",
                   icon: <VisibilityOutlinedIcon />,
-                  url: `/colaborador/" + ${item.id}`,
+                  url: `cargo/${++itemIndex}`,
                   disabled: false,
                 },
                 {
+                  label: "Editar",
+                  icon: <EditOutlinedIcon />,
+                  url: `cargo/editar/${++itemIndex}`,
+                  disabled: true,
+                },
+                {
+                  label: "Duplica",
+                  icon: <ContentCopyOutlinedIcon />,
+                  url: `cargo/duplicar/${++itemIndex}`,
+                  disabled: true,
+                },
+                {
                   label: "Excluir",
-                  icon: <DeleteOutlineOutlinedIcon />,
-                  url: `/colaborador/exluir/" + ${item.id}`,
+                  icon: <RepeatOutlinedIcon />,
+                  url: `cargo/exluir/${++itemIndex}`,
                   disabled: true,
                 },
               ];
