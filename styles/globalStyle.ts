@@ -65,8 +65,17 @@ export const GlobalStyles = css`
     margin-left: 16px;
   }
 
+  .my-40 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
   .mb-24 {
     margin-bottom: 24px;
+  }
+
+  .mt-40 {
+    margin-top: 40px;
   }
 
   .mb-40 {

@@ -9,7 +9,6 @@ import {
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   checked: boolean;
-  label: string;
 }
 
 const Checkbox = ({ checked, ...props }: CheckboxProps) => {

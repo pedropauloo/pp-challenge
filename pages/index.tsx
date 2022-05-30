@@ -32,6 +32,15 @@ import {
 
 import DropdownMenu from "@components/Layout/DropdownMenu";
 import { TabPanel } from "@components/Layout/TabPanel";
+import {
+  ResponsiveTableContent,
+  Table,
+  TableHead,
+  TableRow,
+  TableData,
+  TableHeadData,
+  TableBody,
+} from "@components/Table/styles";
 
 const Home: NextPage = () => {
   const [agents, setAgents] = useState<any[] | null>(null);
@@ -248,7 +257,71 @@ const Home: NextPage = () => {
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
-                Item One
+                <Form>
+                  <Form.Search
+                    className="my-40"
+                    type="text"
+                    label="Pesquisar por"
+                    placeholder="Pesquise por nome ou cpf"
+                  />
+                </Form>
+
+                <Subtitle className="mb-40">Listagem de colaboradores</Subtitle>
+
+                <ResponsiveTableContent>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeadData>Nome completo</TableHeadData>
+                        <TableHeadData>Departamento</TableHeadData>
+                        <TableHeadData>Cargo</TableHeadData>
+                        <TableHeadData>Unidade</TableHeadData>
+                        <TableHeadData>Status</TableHeadData>
+                        <TableHeadData></TableHeadData>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {agents?.map((item: any, rowIndex: any) => {
+                        const dropdownOptions = [
+                          {
+                            label: "Ver colaborador",
+                            icon: <VisibilityOutlinedIcon className="mr-8" />,
+                            url: `colaborador/${item.agent_id}`,
+                            disabled: false,
+                          },
+                          {
+                            label: "Excluir",
+                            icon: (
+                              <DeleteOutlineOutlinedIcon className="mr-8" />
+                            ),
+                            url: `colaborador/excluir/${item.agent_id}`,
+                            disabled: true,
+                          },
+                        ];
+
+                        return (
+                          <TableRow key={rowIndex}>
+                            <TableData>{item.name}</TableData>
+                            <TableData>{item.department}</TableData>
+                            <TableData>{item.role}</TableData>
+                            <TableData>{item.branch}</TableData>
+                            <TableData>
+                              <Status status={item.status}>
+                                {item.status === "active" ? "Ativo" : "Inativo"}
+                              </Status>
+                            </TableData>
+                            <TableData>
+                              <DropdownMenu
+                                label={<MoreVertIcon />}
+                                options={dropdownOptions}
+                              />
+                            </TableData>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </ResponsiveTableContent>
               </TabPanel>
               <TabPanel value={value} index={1}>
                 Item Two

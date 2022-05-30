@@ -111,6 +111,13 @@ export const PageHeader = styled("div")`
   margin: 40px auto 24px 16px;
 `;
 
+export const DropdownButton = styled("button")`
+  display: flex;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+`;
+
 export const DropdownContainer = styled("nav")`
   width: 100%;
   display: inline-block;

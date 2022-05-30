@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { Button } from "@components/Button/styles";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
+  DropdownButton,
   DropdownContainer,
   DropdownContent,
   MenuButton,
@@ -18,30 +18,43 @@ interface OptionsDropdown {
   disabled?: boolean;
 }
 interface DropdownProps {
+  className?: string;
   label: string | JSX.Element;
   options: Array<OptionsDropdown>;
 }
 
-const DropdownMenu = ({ label, options }: DropdownProps) => {
+const DropdownMenu = ({ className, label, options }: DropdownProps) => {
   const router = useRouter();
   const [showOptions, setShowOptions] = useState(false);
+
+  function useClickOutside(ref: any, open: any) {
+    useEffect(() => {
+      function handleClickOutside(event: any) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          open(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref, open]);
+  }
+
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, setShowOptions);
+
   return (
     <DropdownContainer>
-      <Button
-        className="center fw-bold pr-10"
+      <DropdownButton
+        className={className}
         onClick={() => setShowOptions(!showOptions)}
       >
-        <Image
-          src="/images/file-plus.svg"
-          alt="Icone Ações"
-          width={24}
-          height={24}
-        />
         {label}
-      </Button>
+      </DropdownButton>
 
       {showOptions && (
-        <DropdownContent>
+        <DropdownContent ref={dropdownRef}>
           <MenuContainer>
             {options.map((item, index) => (
               <MenuItem className={item.disabled ? "disabled" : ""} key={index}>
