@@ -21,7 +21,6 @@ import { rolesApi } from "services/roles";
 import Page from "@components/Layout/Page";
 import Card from "@components/Card/Card";
 import Form from "@components/Form/Form";
-import DropdownMenu from "@components/Layout/DropdownMenu";
 
 const Cargo: NextPage = () => {
   const [modalPage, setModalPage] = useState(false);

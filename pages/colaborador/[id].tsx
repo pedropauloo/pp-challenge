@@ -25,7 +25,6 @@ const Agent: NextPage = () => {
   useEffect(() => {
     if (id) {
       agentsApi.getAgentById(id).then((response) => {
-        console.log(response.data.agent);
         setAgent(response.data.agent);
       });
     }

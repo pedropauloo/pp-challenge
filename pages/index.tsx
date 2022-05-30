@@ -8,28 +8,15 @@ import { Button, LoadMoreIcon } from "@components/Button/styles";
 import Card from "@components/Card/Card";
 import Page from "@components/Layout/Page";
 import Form from "@components/Form/Form";
-
 import Modal from "@components/Modal/Modal";
 import Collapse from "@components/Collapse/Collapse";
 import Menu from "@components/Menu/Menu";
-
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-
-import { agentsApi } from "services/agents";
-
 import {
   AvatarCircle,
   AvatarName,
   ImageContainer,
   Status,
 } from "@components/Layout/styles";
-
 import DropdownMenu from "@components/Layout/DropdownMenu";
 import { TabPanel } from "@components/Layout/TabPanel";
 import {
@@ -42,15 +29,48 @@ import {
   TableBody,
 } from "@components/Table/styles";
 
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+
+import { agentsApi } from "services/agents";
+import { rolesApi } from "services/roles";
+
+type AgentsType = {
+  agent_id: number;
+  name: string;
+  image: string;
+  department: string;
+  branch: string;
+  role: string;
+  status: string;
+};
+
+type RolesType = {
+  name: string;
+  departament: string;
+  agents_quantity: number;
+};
+
 const Home: NextPage = () => {
-  const [agents, setAgents] = useState<any[] | null>(null);
+  const [agents, setAgents] = useState<AgentsType[] | null>(null);
+  const [roles, setRoles] = useState<RolesType[] | null>(null);
   const [modalPage, setModalPage] = useState(false);
   const [modalMenu, setModalMenu] = useState(false);
 
   useEffect(() => {
     agentsApi.getAgents().then((response) => {
-      console.log(response.data.items);
       setAgents(response.data.items);
+    });
+
+    rolesApi.getRoles().then((response) => {
+      setRoles(response.data.roles);
     });
   }, []);
 
@@ -310,7 +330,7 @@ const Home: NextPage = () => {
                                 {item.status === "active" ? "Ativo" : "Inativo"}
                               </Status>
                             </TableData>
-                            <TableData>
+                            <TableData className="d-flex end">
                               <DropdownMenu
                                 label={<MoreVertIcon />}
                                 options={dropdownOptions}
@@ -324,7 +344,73 @@ const Home: NextPage = () => {
                 </ResponsiveTableContent>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                Item Two
+                <Form>
+                  <Form.Search
+                    className="my-40"
+                    type="text"
+                    label="Pesquisar por"
+                    placeholder="Pesquise por nome ou cpf"
+                  />
+                </Form>
+
+                <Subtitle className="mb-40">Listagem de colaboradores</Subtitle>
+
+                <ResponsiveTableContent>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableHeadData>Cargo</TableHeadData>
+                        <TableHeadData>Departamento</TableHeadData>
+                        <TableHeadData>Colaboradores</TableHeadData>
+                        <TableHeadData></TableHeadData>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {roles?.map((item: any, rowIndex: any) => {
+                        const dropdownOptions = [
+                          {
+                            label: "Ver cargo",
+                            icon: <VisibilityOutlinedIcon className="mr-8" />,
+                            url: `cargo/${++rowIndex}`,
+                            disabled: false,
+                          },
+                          {
+                            label: "Editar",
+                            icon: <EditOutlinedIcon className="mr-8" />,
+                            url: `cargo/editar/${++rowIndex}`,
+                            disabled: true,
+                          },
+                          {
+                            label: "Duplica",
+                            icon: <ContentCopyOutlinedIcon className="mr-8" />,
+                            url: `cargo/duplicar/${++rowIndex}`,
+                            disabled: true,
+                          },
+                          {
+                            label: "Excluir",
+                            icon: <RepeatOutlinedIcon className="mr-8" />,
+                            url: `cargo/exluir/${++rowIndex}`,
+                            disabled: true,
+                          },
+                        ];
+
+                        return (
+                          <TableRow key={rowIndex}>
+                            <TableData>{item.name}</TableData>
+                            <TableData>{item.departament}</TableData>
+                            <TableData>{item.agents_quantity}</TableData>
+                            <TableData className="d-flex end">
+                              <DropdownMenu
+                                label={<MoreVertIcon />}
+                                options={dropdownOptions}
+                              />
+                            </TableData>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </ResponsiveTableContent>
               </TabPanel>
             </Card.Body>
           </Card>

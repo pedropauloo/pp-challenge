@@ -22,15 +22,21 @@ import {
   TableRow,
 } from "@components/Table/styles";
 
+type GroupRules = {
+  role: string;
+  permission: string[];
+};
+type RoleType = {
+  name: string;
+  department: string;
+  grouprules: GroupRules[];
+};
+
 const Agent: NextPage = () => {
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState<RoleType | null>(null);
 
   useEffect(() => {
     rolesApi.getRoleById(1).then((response) => {
-      console.log(response.data.role);
-      console.log(
-        response.data.role.grouprules[0].permissions.includes("write")
-      );
       setRole(response.data.role);
     });
   }, []);

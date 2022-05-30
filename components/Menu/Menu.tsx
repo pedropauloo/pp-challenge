@@ -34,8 +34,6 @@ const Item = ({
 }: MenuItemProps) => {
   const router = useRouter();
 
-  console.log(asElement);
-
   const handleClick = () => {
     if (disabled) return;
 

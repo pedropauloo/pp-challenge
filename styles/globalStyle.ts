@@ -98,8 +98,20 @@ export const GlobalStyles = css`
     background-color: #22e0a1;
   }
 
+  .text-left {
+    text-align: left;
+  }
+
   .text-center {
     text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .end {
+    justify-content: flex-end;
   }
 
   .space-between {
@@ -125,6 +137,10 @@ export const GlobalStyles = css`
 
   .fw-bold {
     font-weight: 600 !important;
+  }
+
+  .d-flex {
+    display: flex;
   }
 
   .d-block {

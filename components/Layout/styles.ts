@@ -112,14 +112,15 @@ export const PageHeader = styled("div")`
 `;
 
 export const DropdownButton = styled("button")`
-  display: flex;
+
+  display: inline-flex;
   border: none;
   background: transparent;
   cursor: pointer;
 `;
 
 export const DropdownContainer = styled("nav")`
-  width: 100%;
+  /* width: 100%; */
   display: inline-block;
   text-align: left;
 `;
