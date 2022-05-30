@@ -38,7 +38,7 @@ const Collapse = ({ header, children, open }: any) => {
         <HeaderContent>{header}</HeaderContent>
         <CollapseButton type="button" onClick={toggleCollapse}>
           <ChevronRightIcon
-            style={{ transform: rotateIcon }}
+            style={{ transform: rotateIcon, fontWeight: "light" }}
             fontSize="large"
           />
         </CollapseButton>

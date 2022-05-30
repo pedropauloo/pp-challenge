@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { Subtitle, Title } from "@components/Text/styles";
-import { Button } from "@components/Button/styles";
+import { ActionButton, Button } from "@components/Button/styles";
 
 import Card from "@components/Card/Card";
 import Page from "@components/Layout/Page";
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
                     </div>
                   </Collapse.Section>
                   <Collapse.Footer>
-                    <Button contentPosition="center" fontWeight="600">
+                    <ActionButton contentPosition="center" fontWeight="600">
                       <Image
                         src="/images/file-plus.svg"
                         alt="Icone Ações"
@@ -122,7 +122,7 @@ const Home: NextPage = () => {
                         height={24}
                       />
                       Ações
-                    </Button>
+                    </ActionButton>
                   </Collapse.Footer>
                 </Collapse>
               );

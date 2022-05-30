@@ -38,7 +38,7 @@ const Agent: NextPage = () => {
   return (
     <Page>
       <Page.Header>
-        <BackButton>
+        <BackButton rounded="medium">
           <ArrowBackIcon />
         </BackButton>
         <Title>Novo cargo</Title>
@@ -48,7 +48,7 @@ const Agent: NextPage = () => {
           <Card.Header>
             <Title>Dados do cargo</Title>
             <Form>
-              <Form.Select label="Departamento" content="Comercial" />
+              <Form.Select label="Departamento" value="Comercial" />
               <Form.Input type="text" label="Cargo" />
             </Form>
           </Card.Header>

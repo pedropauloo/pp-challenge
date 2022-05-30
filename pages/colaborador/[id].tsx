@@ -25,7 +25,7 @@ const Agent: NextPage = () => {
   return (
     <Page>
       <Page.Header>
-        <BackButton>
+        <BackButton rounded="full">
           <ArrowBackIcon />
         </BackButton>
         <Title>Detalhes do colaborador</Title>
@@ -101,10 +101,10 @@ const Agent: NextPage = () => {
 
             <OrganizationalData>
               <Title>Dados organizacionais</Title>
-              <Form.Select label="Departamento" content="Comercial" />
-              <Form.Select label="Cargo" content="Gerente" />
-              <Form.Select label="Unidade" content="Unidade 1" />
-              <Form.Select label="Status" content="Ativo" />
+              <Form.Select disabled label="Departamento" value="Comercial" />
+              <Form.Select disabled label="Cargo" value="Gerente" />
+              <Form.Select disabled label="Unidade" value="Unidade 1" />
+              <Form.Select disabled label="Status" value="Ativo" />
             </OrganizationalData>
           </Card.Body>
         </Card>

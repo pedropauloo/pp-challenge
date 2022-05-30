@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
-import { Button, LoadMoreIcon } from "@components/Button/styles";
+import { ActionButton, Button, LoadMoreIcon } from "@components/Button/styles";
 import { Title, Subtitle } from "@components/Text/styles";
 
 import Modal from "@components/Modal/Modal";
@@ -15,6 +15,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { rolesApi } from "services/roles";
 import Page from "@components/Layout/Page";
 import Card from "@components/Card/Card";
+import Form from "@components/Form/Form";
 
 const Cargo: NextPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,26 +36,33 @@ const Cargo: NextPage = () => {
       <Page.Body>
         <Card>
           <Card.Header>
-            <Button
-              fontWeight="400"
-              contentPosition="space-between"
-              onClick={() => setModalOpen(true)}
-            >
-              Cargos <MoreVertIcon />
-            </Button>
-
-            {modalOpen && (
-              <Modal
-                isOpen={modalOpen}
-                setIsOpen={setModalOpen}
-                title="Categorias"
+            <Form>
+              <Button
+                type="button"
+                fontWeight="400"
+                contentPosition="space-between"
+                onClick={() => setModalOpen(true)}
               >
-                <Menu>
-                  <Menu.Item>Colaboradores</Menu.Item>
-                  <Menu.Item>Cargo</Menu.Item>
-                </Menu>
-              </Modal>
-            )}
+                Cargos <MoreVertIcon />
+              </Button>
+              {modalOpen && (
+                <Modal
+                  isOpen={modalOpen}
+                  setIsOpen={setModalOpen}
+                  title="Categorias"
+                >
+                  <Menu>
+                    <Menu.Item>Colaboradores</Menu.Item>
+                    <Menu.Item>Cargo</Menu.Item>
+                  </Menu>
+                </Modal>
+              )}
+              <Form.Search
+                type="text"
+                label="Pesquisar por"
+                placeholder="Pesquise por nome ou cpf"
+              />
+            </Form>
           </Card.Header>
           <Card.Body>
             <Subtitle>Listagem de cargos</Subtitle>
@@ -75,12 +83,12 @@ const Cargo: NextPage = () => {
 
                     <div>
                       <Collapse.Label>Colaboradores</Collapse.Label>
-                      <Collapse.Item>{item.agentsQuantity}</Collapse.Item>
+                      <Collapse.Item>{item.agents_quantity}</Collapse.Item>
                     </div>
                   </Collapse.Section>
 
                   <Collapse.Footer>
-                    <Button contentPosition="center" fontWeight="600">
+                    <ActionButton contentPosition="center" fontWeight="600">
                       <Image
                         src="/images/file-plus.svg"
                         alt="Icone Ações"
@@ -88,7 +96,7 @@ const Cargo: NextPage = () => {
                         height={24}
                       />
                       Ações
-                    </Button>
+                    </ActionButton>
                   </Collapse.Footer>
                 </Collapse>
               );
