@@ -74,10 +74,10 @@ const Home: NextPage = () => {
     });
   }, []);
 
-  const [value, setValue] = useState(0);
+  const [tabValue, setTabValue] = useState(0);
 
   const handleChange = (event: any, newValue: any) => {
-    setValue(newValue);
+    setTabValue(newValue);
   };
 
   const tabProps = (index: any) => {
@@ -258,7 +258,7 @@ const Home: NextPage = () => {
             <Card.Body>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
-                  value={value}
+                  value={tabValue}
                   onChange={handleChange}
                   aria-label="Initial page"
                   textColor="inherit"
@@ -276,7 +276,7 @@ const Home: NextPage = () => {
                   />
                 </Tabs>
               </Box>
-              <TabPanel value={value} index={0}>
+              <TabPanel value={tabValue} index={0}>
                 <Form>
                   <Form.Search
                     className="my-40"
@@ -343,7 +343,7 @@ const Home: NextPage = () => {
                   </Table>
                 </ResponsiveTableContent>
               </TabPanel>
-              <TabPanel value={value} index={1}>
+              <TabPanel value={tabValue} index={1}>
                 <Form>
                   <Form.Search
                     className="my-40"
