@@ -9,12 +9,13 @@ import {
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 interface SelectProps extends InputHTMLAttributes<HTMLInputElement> {
+  containerClasses?: string;
   label: string;
 }
 
-const Select = ({ label, ...props }: SelectProps) => {
+const Select = ({ label, containerClasses, ...props }: SelectProps) => {
   return (
-    <ContainerInput>
+    <ContainerInput className={containerClasses}>
       <Label>{label}</Label>
       <SelectForm {...props} />
       <ArrowContainer>

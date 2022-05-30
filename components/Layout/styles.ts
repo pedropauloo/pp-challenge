@@ -58,12 +58,20 @@ export const Section = styled("section")`
 
 // ----- InfoBox -----
 
+export const BoxContainer = styled("div")`
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  flex-wrap: wrap;
+`;
+
 export const InfoBox = styled("div")`
   display: flex;
   border: 2px solid #cad6d1;
   align-items: center;
   border-radius: 8px;
   padding: 16px;
+  min-width: 280px;
 `;
 
 export const InfoBoxContent = styled("div")`
@@ -83,7 +91,16 @@ export const Info = styled("span")`
 
 export const PageHeader = styled("div")`
   display: flex;
-  margin: 40px auto 24px 16px;
+  align-items: center;
+
+  @media screen and (min-width: 480px) {
+    margin: 40px auto 24px 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0 auto;
+    max-width: 960px;
+  }
 `;
 
 // ----- Dropdown -----

@@ -9,7 +9,12 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import Page from "@components/Layout/Page";
 import Card from "@components/Card/Card";
-import { AvatarCircle, ImageContainer, Label } from "@components/Layout/styles";
+import {
+  AvatarCircle,
+  BoxContainer,
+  ImageContainer,
+  Label,
+} from "@components/Layout/styles";
 import InfoBox from "@components/Layout/InfoBox";
 import AgentHeader from "@components/Agent/AgentHeader";
 import Form from "@components/Form/Form";
@@ -81,82 +86,89 @@ const Agent: NextPage = () => {
             </AgentHeader>
 
             <Subtitle>Informações Pessoais</Subtitle>
-
-            <InfoBox className="bg-light-gray">
-              <InfoBox.Image className="bg-gray p-10 rounded-full">
-                <AvatarCircle
-                  src={"/images/id.svg"}
-                  alt={"Imagem teste"}
-                  width={38}
-                  height={38}
-                />
-              </InfoBox.Image>
-              <InfoBox.Content>
-                <InfoBox.Label className="fw-light">CPF</InfoBox.Label>
-                <InfoBox.Info className="fw-light">
-                  {agent?.document.number}
-                </InfoBox.Info>
-              </InfoBox.Content>
-            </InfoBox>
-            <InfoBox className="bg-light-gray mt-8">
-              <InfoBox.Image className="bg-gray p-10 rounded-full">
-                <AvatarCircle
-                  src={"/images/phone-call.svg"}
-                  alt={"Imagem teste"}
-                  width={38}
-                  height={38}
-                />
-              </InfoBox.Image>
-              <InfoBox.Content>
-                <InfoBox.Label className="fw-light">Telefone</InfoBox.Label>
-                <InfoBox.Info className="fw-light">
-                  +{agent?.phone.ddi} {agent?.phone.ddd} {agent?.phone.number}
-                </InfoBox.Info>
-              </InfoBox.Content>
-            </InfoBox>
-            <InfoBox className="bg-light-gray mt-8 mb-40">
-              <InfoBox.Image className="bg-gray p-10 rounded-full">
-                <AvatarCircle
-                  src={"/images/calendar.svg"}
-                  alt={"Imagem teste"}
-                  width={38}
-                  height={38}
-                />
-              </InfoBox.Image>
-              <InfoBox.Content>
-                <InfoBox.Label className="fw-light">Nascimento</InfoBox.Label>
-                <InfoBox.Info className="fw-light">
-                  {agent && new Date(agent.birth_date).toLocaleDateString()}
-                </InfoBox.Info>
-              </InfoBox.Content>
-            </InfoBox>
+            <BoxContainer className="mb-40">
+              <InfoBox className="bg-light-gray mt-8 mx-0">
+                <InfoBox.Image className="bg-gray p-10 rounded-full">
+                  <AvatarCircle
+                    src={"/images/id.svg"}
+                    alt={"Imagem teste"}
+                    width={38}
+                    height={38}
+                  />
+                </InfoBox.Image>
+                <InfoBox.Content>
+                  <InfoBox.Label className="fw-light">CPF</InfoBox.Label>
+                  <InfoBox.Info className="fw-light">
+                    {agent?.document.number}
+                  </InfoBox.Info>
+                </InfoBox.Content>
+              </InfoBox>
+              <InfoBox className="bg-light-gray mt-8 mx-0 mx-sm-24">
+                <InfoBox.Image className="bg-gray p-10 rounded-full">
+                  <AvatarCircle
+                    src={"/images/phone-call.svg"}
+                    alt={"Imagem teste"}
+                    width={38}
+                    height={38}
+                  />
+                </InfoBox.Image>
+                <InfoBox.Content>
+                  <InfoBox.Label className="fw-light">Telefone</InfoBox.Label>
+                  <InfoBox.Info className="fw-light">
+                    +{agent?.phone.ddi} {agent?.phone.ddd} {agent?.phone.number}
+                  </InfoBox.Info>
+                </InfoBox.Content>
+              </InfoBox>
+              <InfoBox className="bg-light-gray mt-8 mx-0">
+                <InfoBox.Image className="bg-gray p-10 rounded-full">
+                  <AvatarCircle
+                    src={"/images/calendar.svg"}
+                    alt={"Imagem teste"}
+                    width={38}
+                    height={38}
+                  />
+                </InfoBox.Image>
+                <InfoBox.Content>
+                  <InfoBox.Label className="fw-light">Nascimento</InfoBox.Label>
+                  <InfoBox.Info className="fw-light">
+                    {agent && new Date(agent.birth_date).toLocaleDateString()}
+                  </InfoBox.Info>
+                </InfoBox.Content>
+              </InfoBox>
+            </BoxContainer>
             <InfoBox>
               <InfoBox.Content>
                 <Subtitle>Dados organizacionais</Subtitle>
-                <Form.Select
-                  className="mb-24"
-                  label="Departamento"
-                  value={agent?.department}
-                  disabled
-                />
-                <Form.Select
-                  className="mb-24"
-                  label="Cargo"
-                  value={agent?.role}
-                  disabled
-                />
-                <Form.Select
-                  className="mb-24"
-                  label="Unidade"
-                  value={agent?.branch}
-                  disabled
-                />
-                <Form.Select
-                  className="mb-24"
-                  label="Status"
-                  value={agent?.status === "active" ? "Ativo" : "Inativo"}
-                  disabled
-                />
+                <BoxContainer>
+                  <Form.Select
+                    containerClasses="mw-420 mr-sm-24"
+                    className="mb-24"
+                    label="Departamento"
+                    value={agent?.department}
+                    disabled
+                  />
+                  <Form.Select
+                    containerClasses="mw-420"
+                    className="mb-24"
+                    label="Cargo"
+                    value={agent?.role}
+                    disabled
+                  />
+                  <Form.Select
+                    containerClasses="mw-420 mr-sm-24"
+                    className="mb-24"
+                    label="Unidade"
+                    value={agent?.branch}
+                    disabled
+                  />
+                  <Form.Select
+                    containerClasses="mw-420"
+                    className="mb-24"
+                    label="Status"
+                    value={agent?.status === "active" ? "Ativo" : "Inativo"}
+                    disabled
+                  />
+                </BoxContainer>
               </InfoBox.Content>
             </InfoBox>
           </Card.Body>

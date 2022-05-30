@@ -21,6 +21,7 @@ import {
   TableHeadData,
   TableRow,
 } from "@components/Table/styles";
+import { BoxContainer } from "@components/Layout/styles";
 
 type GroupRules = {
   role: string;
@@ -47,19 +48,27 @@ const Agent: NextPage = () => {
         <BackButton rounded="8px">
           <ArrowBackIcon />
         </BackButton>
-        <Title>Novo cargo</Title>
+        <Title>Cargos e permissões</Title>
       </Page.Header>
       <Page.Body>
         <Card>
           <Card.Header>
             <Subtitle>Dados do cargo</Subtitle>
             <Form>
-              <Form.Select
-                className="mb-24"
-                label="Departamento"
-                value="Comercial"
-              />
-              <Form.Input type="text" label="Cargo" value={role?.name} />
+              <BoxContainer>
+                <Form.Select
+                  containerClasses="mw-420 mr-sm-24"
+                  className="mb-24"
+                  label="Departamento"
+                  value="Comercial"
+                />
+                <Form.Input
+                  containerClasses="mw-420"
+                  type="text"
+                  label="Cargo"
+                  value={role?.name}
+                />
+              </BoxContainer>
             </Form>
           </Card.Header>
           <Card.Body>
@@ -71,7 +80,7 @@ const Agent: NextPage = () => {
                     <TableHeadData>Cargo</TableHeadData>
                     <TableHeadData>Ler</TableHeadData>
                     <TableHeadData>Editar</TableHeadData>
-                    <TableHeadData>Comentar</TableHeadData>
+                    <TableHeadData>Excluir</TableHeadData>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -79,17 +88,17 @@ const Agent: NextPage = () => {
                     return (
                       <TableRow key={rowIndex}>
                         <TableData>{row.role}</TableData>
-                        <TableData className="text-center">
+                        <TableData>
                           <Form.Checkbox
                             checked={row.permissions.includes("read")}
                           />
                         </TableData>
-                        <TableData className="text-center">
+                        <TableData>
                           <Form.Checkbox
                             checked={row.permissions.includes("write")}
                           />
                         </TableData>
-                        <TableData className="text-center">
+                        <TableData>
                           <Form.Checkbox
                             checked={row.permissions.includes("delete")}
                           />

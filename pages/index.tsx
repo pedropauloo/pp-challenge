@@ -249,8 +249,8 @@ const Home: NextPage = () => {
           </Card>
         </Page.Body>
       </Page>
-      <Page className="d-none d-sm-block container-center">
-        <Page.Header className="mx-0">
+      <Page className="d-none d-sm-block">
+        <Page.Header>
           <Title>Organização</Title>
         </Page.Header>
         <Page.Body>

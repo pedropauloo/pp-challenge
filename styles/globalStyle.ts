@@ -151,6 +151,10 @@ export const GlobalStyles = css`
     display: none;
   }
 
+  .mw-420 {
+    max-width: 420px;
+  }
+
   @media screen and (min-width: 480px) {
     .d-sm-block {
       display: block !important;
@@ -158,6 +162,23 @@ export const GlobalStyles = css`
 
     .d-sm-none {
       display: none !important;
+    }
+
+    .m-sm-0 {
+      margin: 0 !important;
+    }
+
+    .mx-sm-24 {
+      margin-left: 24px !important;
+      margin-right: 24px !important;
+    }
+
+    .ml-sm-24 {
+      margin-left: 24px !important;
+    }
+
+    .mr-sm-24 {
+      margin-right: 24px !important;
     }
   }
 `;
