@@ -17,12 +17,6 @@ export const Label = styled("span")`
   font-size: 12px;
 `;
 
-export const Info = styled("span")`
-  font-size: 14px;
-  font-weight: 600;
-  color: #587169;
-`;
-
 export const Status = styled("span")<{
   status: string;
 }>`
@@ -50,7 +44,9 @@ export const AvatarName = styled(Label)`
   margin-left: 8px;
 `;
 
-export const RoleName = styled(Label)``;
+export const RoleName = styled(Label)`
+  font-weight: 400;
+`;
 
 export const Section = styled("section")`
   margin: 8px 0;
@@ -59,6 +55,8 @@ export const Section = styled("section")`
   padding: 16px;
   border-radius: 8px;
 `;
+
+// ----- InfoBox -----
 
 export const InfoBox = styled("div")`
   display: flex;
@@ -75,33 +73,10 @@ export const InfoBoxContent = styled("div")`
   margin-left: 8px;
 `;
 
-export const ContainerCircle = styled("div")<{
-  width: string;
-  height: string;
-  padding: string;
-}>`
-  position: relative;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  background: #eaefed;
-  padding: ${({ padding }) => padding}px;
-  border-radius: 50%;
-`;
-
-export const SectionContent = styled("div")`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const InfoAgente = styled("div")`
-  margin-left: 10px;
-`;
-
-export const OrganizationalData = styled("div")`
-  border: 2px solid #eaefed;
-  border-radius: 8px;
-  padding: 24px;
+export const Info = styled("span")`
+  font-size: 14px;
+  font-weight: 600;
+  color: #587169;
 `;
 
 // ----- Page Content -----
@@ -111,8 +86,9 @@ export const PageHeader = styled("div")`
   margin: 40px auto 24px 16px;
 `;
 
-export const DropdownButton = styled("button")`
+// ----- Dropdown -----
 
+export const DropdownButton = styled("button")`
   display: inline-flex;
   border: none;
   background: transparent;
@@ -135,6 +111,8 @@ export const DropdownContent = styled("nav")`
   border-bottom-width: 1px;
   z-index: 10;
 `;
+
+// ----- Menu -----
 
 export const Menu = styled("nav")``;
 
