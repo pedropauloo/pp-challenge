@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { InputHTMLAttributes, useState } from "react";
+
 import {
   Checkbox as CheckboxForm,
+  CheckboxContainer,
   CheckboxIcon,
   Checkmark,
 } from "./styles";
 
-const Checkbox = ({ checked }: any) => {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+  checked: boolean;
+}
+
+const Checkbox = ({ checked, ...props }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
   return (
-    <label>
+    <CheckboxContainer>
       <CheckboxForm
+        {...props}
         type="checkbox"
         onChange={() => {
           setIsChecked(!isChecked);
@@ -19,7 +26,7 @@ const Checkbox = ({ checked }: any) => {
       <Checkmark checked={isChecked}>
         <CheckboxIcon />
       </Checkmark>
-    </label>
+    </CheckboxContainer>
   );
 };
 

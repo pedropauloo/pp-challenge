@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 
 import { BackButton } from "@components/Button/styles";
-import { Title } from "@components/Text/styles";
+import { Subtitle, Title } from "@components/Text/styles";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -21,16 +21,25 @@ import {
   TableHeadData,
   TableRow,
 } from "@components/Table/styles";
+import { BoxContainer } from "@components/Layout/styles";
+import { useRouter } from "next/router";
+
+type GroupRules = {
+  role: string;
+  permission: string[];
+};
+type RoleType = {
+  name: string;
+  department: string;
+  grouprules: GroupRules[];
+};
 
 const Agent: NextPage = () => {
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState<RoleType | null>(null);
+  const route = useRouter();
 
   useEffect(() => {
     rolesApi.getRoleById(1).then((response) => {
-      console.log(response.data.role);
-      console.log(
-        response.data.role.grouprules[0].permissions.includes("write")
-      );
       setRole(response.data.role);
     });
   }, []);
@@ -38,21 +47,34 @@ const Agent: NextPage = () => {
   return (
     <Page>
       <Page.Header>
-        <BackButton rounded="medium">
+        <BackButton rounded="8px" onClick={() => route.push("/cargo")}>
           <ArrowBackIcon />
         </BackButton>
-        <Title>Novo cargo</Title>
+        <Title>Cargos e permissões</Title>
       </Page.Header>
       <Page.Body>
         <Card>
           <Card.Header>
-            <Title>Dados do cargo</Title>
+            <Subtitle>Dados do cargo</Subtitle>
             <Form>
-              <Form.Select label="Departamento" value="Comercial" />
-              <Form.Input type="text" label="Cargo" />
+              <BoxContainer>
+                <Form.Select
+                  containerClasses="mw-420 mr-sm-24"
+                  className="mb-24"
+                  label="Departamento"
+                  value="Comercial"
+                />
+                <Form.Input
+                  containerClasses="mw-420"
+                  type="text"
+                  label="Cargo"
+                  value={role?.name}
+                />
+              </BoxContainer>
             </Form>
           </Card.Header>
           <Card.Body>
+            <Subtitle>Listagem de permissões</Subtitle>
             <ResponsiveTableContent>
               <Table>
                 <TableHead>
@@ -60,7 +82,7 @@ const Agent: NextPage = () => {
                     <TableHeadData>Cargo</TableHeadData>
                     <TableHeadData>Ler</TableHeadData>
                     <TableHeadData>Editar</TableHeadData>
-                    <TableHeadData>Comentar</TableHeadData>
+                    <TableHeadData>Excluir</TableHeadData>
                   </TableRow>
                 </TableHead>
                 <TableBody>

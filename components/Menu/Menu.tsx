@@ -1,22 +1,52 @@
+import { useRouter } from "next/router";
 import {
   Menu as MenuComponent,
   MenuContainer,
   MenuItem,
   MenuButton,
-} from "./styles";
+} from "@components/Layout/styles";
 
-const Menu = ({ children }: any) => {
+interface MenuProps {
+  children: any;
+}
+
+interface MenuItemProps {
+  asElement?: any;
+  children: any;
+  disabled?: boolean;
+  url?: string;
+}
+
+const Menu = ({ children }: MenuProps) => {
   return (
     <MenuComponent>
-      <MenuContainer>{children}</MenuContainer>
+      <MenuContainer className="p-0">{children}</MenuContainer>
     </MenuComponent>
   );
 };
 
-const Item = ({ children }: any) => {
+const Item = ({
+  children,
+  disabled,
+  asElement,
+  url,
+  ...props
+}: MenuItemProps) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (disabled) return;
+
+    if (!url) return;
+
+    return router.push(url);
+  };
+
   return (
-    <MenuItem>
-      <MenuButton>{children}</MenuButton>
+    <MenuItem className={disabled ? "disabled" : ""} onClick={handleClick}>
+      <MenuButton as={asElement ?? "button"} {...props}>
+        {children}
+      </MenuButton>
     </MenuItem>
   );
 };

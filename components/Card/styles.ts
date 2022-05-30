@@ -9,14 +9,13 @@ export const Card = styled("div")`
 `;
 
 export const CardHeader = styled("div")`
-  padding: 20px 16px;
+  padding: 40px 16px;
   display: flex;
   align-items: center;
-  margin-top: 8px;
   border-bottom: 2px solid #eaefed;
   flex-wrap: wrap;
 `;
 
 export const CardBody = styled("div")`
-  padding: 20px 16px;
+  padding: 40px 16px;
 `;

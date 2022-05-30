@@ -6,7 +6,9 @@ export const FormComponent = styled("form")`
 `;
 
 export const Input = styled("input")`
+  font-size: 16px;
   border: 2px solid #cad6d1;
+  -webkit-text-fill-color: #587169;
   color: #587169;
   border-radius: 8px;
   background: #fff;
@@ -22,6 +24,11 @@ export const Input = styled("input")`
   &:focus-visible {
     outline: none;
     border-color: #b5f1dd;
+  }
+
+  &:disabled {
+    opacity: 1;
+    background-color: #f5faf8;
   }
 `;
 
@@ -45,22 +52,26 @@ export const Label = styled("label")`
 `;
 
 export const ContainerInput = styled("div")`
+  width: 100%;
   position: relative;
-  margin: 20px 0;
   min-width: 250px;
 `;
 
 export const SearchIconContainer = styled("div")`
   color: #587169;
   position: absolute;
-  top: 16px;
+  top: 19px;
   left: 16px;
 `;
 export const ArrowContainer = styled("div")`
   color: #587169;
   position: absolute;
-  top: 14px;
+  top: 13px;
   right: 16px;
+`;
+
+export const CheckboxContainer = styled("label")`
+  display: inline-block;
 `;
 
 export const Checkbox = styled("input")`

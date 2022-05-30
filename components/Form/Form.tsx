@@ -4,8 +4,13 @@ import Search from "./Search";
 import Select from "./Select";
 import { FormComponent } from "./styles";
 
-const Form = ({ children }: any) => {
-  return <FormComponent>{children}</FormComponent>;
+interface FormProps {
+  className?: string;
+  children: any;
+}
+
+const Form = ({ children, className }: FormProps) => {
+  return <FormComponent className={className}>{children}</FormComponent>;
 };
 
 Form.Checkbox = Checkbox;

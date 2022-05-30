@@ -1,17 +1,22 @@
 import { PageHeader } from "./styles";
 
-const Page = ({ children }: any) => {
-  return <>{children}</>;
+interface PageProps {
+  className?: string;
+  children: any;
+}
+
+const Page = ({ className, children }: PageProps) => {
+  return <div className={className}>{children}</div>;
 };
 
-const Header = ({ children }: any) => {
-  return <PageHeader>{children}</PageHeader>;
+const Header = ({ className, children }: PageProps) => {
+  return <PageHeader className={className}>{children}</PageHeader>;
 };
 
 Page.Header = Header;
 
-const Body = ({ children }: any) => {
-  return <>{children}</>;
+const Body = ({ className, children }: PageProps) => {
+  return <div className={className}>{children}</div>;
 };
 
 Page.Body = Body;

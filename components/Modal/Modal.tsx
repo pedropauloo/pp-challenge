@@ -5,7 +5,21 @@ import { Subtitle } from "@components/Text/styles";
 
 import CloseIcon from "@mui/icons-material/Close";
 
-const Modal = ({ isOpen, setIsOpen, title, children }: any) => {
+interface ModalProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  title: string;
+  children: any;
+  closeButton?: boolean;
+}
+
+const Modal = ({
+  isOpen,
+  setIsOpen,
+  title,
+  children,
+  closeButton = true,
+}: ModalProps) => {
   const [openContent, setOpenContent] = useState(true);
 
   useEffect(() => {
@@ -17,10 +31,12 @@ const Modal = ({ isOpen, setIsOpen, title, children }: any) => {
     <ContainerModal>
       <Wrapper open={openContent} onClick={() => setOpenContent(false)} />
       <Content open={openContent}>
-        <Subtitle>{title}</Subtitle>
-        <CloseButton onClick={() => setOpenContent(false)} type="button">
-          <CloseIcon />
-        </CloseButton>
+        {title && <Subtitle>{title}</Subtitle>}
+        {closeButton && (
+          <CloseButton onClick={() => setOpenContent(false)} type="button">
+            <CloseIcon />
+          </CloseButton>
+        )}
         {children}
       </Content>
     </ContainerModal>
