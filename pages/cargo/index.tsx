@@ -4,33 +4,36 @@ import { useEffect, useState } from "react";
 
 import { Button, LoadMoreIcon } from "@components/Button/styles";
 import { Title, Subtitle } from "@components/Text/styles";
-
+import Page from "@components/Layout/Page";
+import Card from "@components/Card/Card";
+import Form from "@components/Form/Form";
 import Modal from "@components/Modal/Modal";
 import Menu from "@components/Menu/Menu";
 import Collapse from "@components/Collapse/Collapse";
 import { HeaderCollapse } from "@components/Role/HeaderCollapse";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
 
 import { rolesApi } from "services/roles";
-import Page from "@components/Layout/Page";
-import Card from "@components/Card/Card";
-import Form from "@components/Form/Form";
+
+type RolesType = {
+  name: string;
+  departament: string;
+  agents_quantity: number;
+};
 
 const Cargo: NextPage = () => {
   const [modalPage, setModalPage] = useState(false);
   const [modalMenu, setModalMenu] = useState(false);
 
-  const [agents, setAgents] = useState<any[] | null>(null);
+  const [agents, setAgents] = useState<RolesType[] | null>(null);
 
   useEffect(() => {
     rolesApi.getRoles().then((response) => {
-      console.log(response.data.roles);
       setAgents(response.data.roles);
     });
   }, []);
