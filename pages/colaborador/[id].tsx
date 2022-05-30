@@ -16,11 +16,35 @@ import Form from "@components/Form/Form";
 
 import { agentsApi } from "services/agents";
 
+type AgentDocumentType = {
+  type: string;
+  number: string;
+};
+type AgentPhoneType = {
+  ddd: string;
+  ddi: string;
+  number: string;
+};
+
+type AgentType = {
+  id: number;
+  name: string;
+  email: string;
+  phone: AgentPhoneType;
+  document: AgentDocumentType;
+  birth_date: string;
+  image: string;
+  department: string;
+  branch: string;
+  role: string;
+  status: string;
+};
+
 const Agent: NextPage = () => {
   const route = useRouter();
 
   const { id } = route.query;
-  const [agent, setAgent] = useState<any>();
+  const [agent, setAgent] = useState<AgentType | null>();
 
   useEffect(() => {
     if (id) {
@@ -102,7 +126,7 @@ const Agent: NextPage = () => {
               <InfoBox.Content>
                 <InfoBox.Label className="fw-light">Nascimento</InfoBox.Label>
                 <InfoBox.Info className="fw-light">
-                  {new Date(agent?.birth_date).toLocaleDateString()}
+                  {agent && new Date(agent.birth_date).toLocaleDateString()}
                 </InfoBox.Info>
               </InfoBox.Content>
             </InfoBox>
