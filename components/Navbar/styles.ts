@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const NavbarContainer = styled("nav")`
   padding: 16px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-bottom: 2px solid #eaefed;
 
   nav {
@@ -11,7 +11,7 @@ export const NavbarContainer = styled("nav")`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 480px) {
     nav {
       align-items: center;
       width: 50%;
@@ -31,7 +31,7 @@ export const LogoContainer = styled("div")`
   width: 32px;
   height: 32px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 480px) {
     transform: translateX(50%);
     width: 42px;
     height: 42px;

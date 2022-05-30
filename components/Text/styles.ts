@@ -13,8 +13,12 @@ export const ThinText = styled("span")`
 
 export const Title = styled("h1")`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 32px;
   color: #34423d;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 export const Subtitle = styled("h2")`

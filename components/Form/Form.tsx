@@ -5,11 +5,12 @@ import Select from "./Select";
 import { FormComponent } from "./styles";
 
 interface FormProps {
+  className?: string;
   children: any;
 }
 
-const Form = ({ children }: FormProps) => {
-  return <FormComponent>{children}</FormComponent>;
+const Form = ({ children, className }: FormProps) => {
+  return <FormComponent className={className}>{children}</FormComponent>;
 };
 
 Form.Checkbox = Checkbox;
